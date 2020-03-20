@@ -1,1 +1,1 @@
-# covid-19-hospital-scheduler
+# covid19-hospital-scheduler
