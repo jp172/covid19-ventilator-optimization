@@ -12,7 +12,3 @@ class Person:
     position: Position
     corona_likelihood: float
     severity: float
-    is_assigned: bool = False
-    is_delivered: bool = False
-    assigned_hospital_id: int = 1
-    action_times: TimeOfActions = TimeOfActions()

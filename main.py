@@ -2,6 +2,7 @@ import argparse
 
 from enum import Enum
 
+from src.write import write
 from src.solve import solve
 from src.visualize import visualize
 from src.objects.person import Person
@@ -34,6 +35,8 @@ def main(args):
     if args.visualize:
         print("Start visualizing")
         visualize(result_data)
+
+    write_output(args.output_file)
 
 
 if __name__ == "__main__":

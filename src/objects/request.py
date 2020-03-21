@@ -8,5 +8,8 @@ from .person import Person
 @dataclass
 class Request:
     filed_at: int
-    is_handled: bool
+    pickup_at : int
+    delivery_at : int
+    is_handled: bool = False
+    hospital_id : str
     person: Person

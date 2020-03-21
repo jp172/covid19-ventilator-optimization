@@ -13,3 +13,4 @@ class Vehicle:
     position: Position
     depot_position: Position
     locations: List[Position] = []
+    speed : int # in km/h
