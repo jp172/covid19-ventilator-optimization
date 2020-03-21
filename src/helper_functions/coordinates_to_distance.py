@@ -5,8 +5,8 @@ from math import sin, asin, cos, sqrt, radians
 
 
 def get_distance(a, b):
-    (lat1, lon1) = a
-    (lat2, lon2) = b
+    lat1, lon1 = a.lat, a.lon
+    lat2, lon2 = b.lat, b.lon
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     dlon = lon2 - lon1
     dlat = lat2 - lat1

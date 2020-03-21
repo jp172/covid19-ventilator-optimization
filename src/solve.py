@@ -1,14 +1,14 @@
 # the solver should do the simulation, i.e., go through time steps, call the scheduler
 # if a new request comes in, etc. to this end the requests should be sorted in terms of time.
-from scheduler.vehicle_scheduler import *
-from helper_functions.ab_duration import get_duration
+from src.schedulers.vehicle_scheduler import *
+from src.helper_functions.ab_duration import get_duration
 
 def solve(instance, simulator):
 
 
     # do the simulation
     reqs = list(instance.requests.values())
-    reqs = sort(reqs, key = lambda r : r.filed_at)
+    reqs = sorted(reqs, key = lambda r : r.filed_at)
 
     for r in reqs:
         hospital = simulator.assign_request(instance.hospitals, r)
@@ -23,5 +23,3 @@ def solve(instance, simulator):
         delivery_at = get_duration(r.person.position, hospital.position, vehicle.speed)
         r.pickup_at = pickup_at
         r.delivery_at = delivery_at
-
-    

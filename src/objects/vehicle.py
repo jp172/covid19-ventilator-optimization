@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json
 
 from typing import List
@@ -13,5 +13,5 @@ class Vehicle:
     max_range: int
     position: Position
     depot_position: Position
-    locations: List[Position] = []
     speed : int # in km/h
+    locations: List[Position] = field(default_factory=list)
