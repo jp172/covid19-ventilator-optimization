@@ -4,6 +4,9 @@ from enum import Enum
 
 from src.solve import solve
 from src.visualize import visualize
+from src.objects.person import Person
+from src.objects.hospital import Hospital
+from src.helper_functions.read_data import read_objects
 from src.schedulers.simple_scheduler import SimpleScheduler
 
 
@@ -22,11 +25,11 @@ def main(args):
     if args.scenario not in [s.value for s in Scenario]:
         raise ValueError
 
-    hospital_data = "data/hospitals/hospitals.json"
-    request_data = "data/patient_requests/patients.json"
+    hospital_dict = read_objects("data/hospitals/hospitals.json", Hospital)
+    person_dict = read_objects("data/patient_requests/patients.json", Person)
 
     print("Start solving")
-    result_data = solve(hospital_data, request_data, SimpleScheduler(), args.scenario)
+    result_data = solve(hospital_dict, person_dict, SimpleScheduler(), args.scenario)
 
     if args.visualize:
         print("Start visualizing")

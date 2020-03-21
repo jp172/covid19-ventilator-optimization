@@ -1,8 +1,12 @@
 import json
 import overpy
 import numpy as np
+from random import randint, seed
 import matplotlib.pyplot as plt
 
+
+# set fixed random seed
+seed(42)
 
 api = overpy.Overpass()
 r = api.query(
@@ -19,7 +23,12 @@ coords = []
 coords += [(float(node.lon), float(node.lat)) for node in r.nodes]
 
 hospital_dict = {
-    f"hospital{index}": {"latitude": data[1], "longitude": data[0]}
+    f"hospital{index}": {
+        "ident": index,
+        "nbr_free_beds": randint(0, 20),
+        "nbr_free_corona_beds": randint(0, 10),
+        "position": {"lat": data[1], "lon": data[0]},
+    }
     for index, data in enumerate(coords)
 }
 

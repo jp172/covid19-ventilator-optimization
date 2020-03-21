@@ -8,7 +8,7 @@ from .position import Position
 @dataclass_json
 @dataclass
 class Person:
-    ident: str
+    ident: int
     position: Position
     corona_likelihood: float
     severity: float

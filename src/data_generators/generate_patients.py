@@ -3,6 +3,7 @@ import json
 import random
 
 from ..objects.person import Person
+from ..objects.position import Position
 
 
 def generate_patients():
@@ -16,18 +17,21 @@ def generate_patients():
     time_range = (0, 100000)
 
     data = {}
-    data["patients"] = []
 
     for i in range(nbr_patients):
         p = Person(
-            i,
-            random.uniform(lat_range[0], lat_range[1]),
-            random.uniform(lon_range[0], lon_range[1]),
-            random.random(),
-            random.random(),
+            ident=i,
+            position=Position(
+                random.uniform(lat_range[0], lat_range[1]),
+                random.uniform(lon_range[0], lon_range[1]),
+            ),
+            corona_likelihood=random.random(),
+            severity=random.random(),
+            is_assigned=False,
+            is_delivered=False,
         )
-        p.action_times.request_filed = random.uniform(time_range[0], time_range[1])
-        data["patients"].append(p.to_dict())
+        p.action_times.request_filed = random.randint(time_range[0], time_range[1])
+        data[p.ident] = p.to_dict()
 
     with open("data/patient_requests/patients.json", "w") as f:
         json.dump(data, f)
