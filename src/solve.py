@@ -1,10 +1,10 @@
 # the solver should do the simulation, i.e., go through time steps, call the scheduler
 # if a new request comes in, etc. to this end the requests should be sorted in terms of time.
-from src.schedulers.vehicle_scheduler import vehicle_scheduler, scheduler
+from src.schedulers.vehicle_scheduler import vehicle_scheduler
 from src.helper_functions.ab_duration import get_duration
 
 
-def solve(instance, simulator):
+def solve(instance, scheduler):
 
     # do the simulation
     updates_requests = []
