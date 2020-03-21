@@ -23,7 +23,7 @@ coords = []
 coords += [(float(node.lon), float(node.lat)) for node in r.nodes]
 
 hospital_dict = {
-    f"hospital{index}": {
+    f"{index}": {
         "ident": index,
         "nbr_free_beds": randint(0, 20),
         "nbr_free_corona_beds": randint(0, 10),
