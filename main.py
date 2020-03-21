@@ -20,8 +20,7 @@ class Scenario(Enum):
     NORMAL = "normal"
 
 
-# this main reads data, solves the scheduling problem, writes json output, and
-# will visualize the results sooooon
+# this main reads data, solves the scheduling problem, writes json output, and visualize the results
 
 
 def main(args):

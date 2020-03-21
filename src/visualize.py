@@ -1,3 +1,12 @@
+# todo:
+# skala verschiebt sich und ist kacke
+# Zeit sollte in Tagen sein:
+    # generiere Zeiten zu richtigen Tagen
+    
+#
+
+
+
 import plotly.express as px
 import pandas as pd
 
@@ -52,7 +61,7 @@ def hospital_visualization(instance, start, end, ticks):
 
 def corona_visualization(instance, start, end, ticks):
 
-    # TODO: visible for more time steps
+    # visible for more time steps
     nbr_ticks_visible = 10
 
     reqs = sorted(instance.requests.values(), key = lambda r : r.filed_at)
@@ -97,6 +106,5 @@ def visualize(instance):
     time_frame_end = max(r.filed_at for r in instance.requests.values())
     nbr_ticks = 100
 
-    # okay, lets go
     hospital_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)
     corona_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)
