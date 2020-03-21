@@ -11,4 +11,4 @@ class Hospital:
     nbr_free_beds: int
     nbr_free_corona_beds: int
     position: Position
-    capacity_score: float
+    capacity_coefficient: float
