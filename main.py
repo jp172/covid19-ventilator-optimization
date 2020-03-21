@@ -34,6 +34,7 @@ def main(args):
     project_instance.hospitals = read_objects("data/hospitals/hospitals.json", Hospital)
     project_instance.requests = read_objects("data/patient_requests/requests.json", Request)
     project_instance.generate_vehicles()
+    project_instance.generate_bed_updates()
 
     print("Start solving")
     solve(project_instance, SimpleScheduler())
@@ -43,7 +44,7 @@ def main(args):
     if args.visualize:
         print("Start visualizing")
         visualize(project_instance)
-        
+
     if args.output:
         write_output(project_instance)
 

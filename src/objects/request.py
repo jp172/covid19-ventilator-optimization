@@ -13,4 +13,4 @@ class Request:
     pickup_at : int = -1
     delivery_at : int = -1
     is_handled: bool = False
-    hospital_id : str = ""
+    hospital_id : int = -1
