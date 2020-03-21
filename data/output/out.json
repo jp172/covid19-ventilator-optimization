@@ -1,0 +1,142 @@
+{
+  "0": {
+    "ident": 0,
+    "filed_at": 5764.083251546337,
+    "person": {
+      "ident": 0,
+      "position": { "lat": 51.309214410324735, "lon": 9.812893006059833 },
+      "corona_likelihood": 0.39768541560102455,
+      "severity": 0.8653238547780188
+    },
+    "pickup_at": 1.4641302226584103,
+    "delivery_at": 1.4641302226584103,
+    "is_handled": true,
+    "hospital_id": 1
+  },
+  "1": {
+    "ident": 1,
+    "filed_at": 53412.33834540525,
+    "person": {
+      "ident": 1,
+      "position": { "lat": 49.47976204154465, "lon": 10.662237063666934 },
+      "corona_likelihood": 0.9378501023228043,
+      "severity": 0.7635137774701488
+    },
+    "pickup_at": 0.5263840531868569,
+    "delivery_at": 0.5263840531868569,
+    "is_handled": true,
+    "hospital_id": 8
+  },
+  "2": {
+    "ident": 2,
+    "filed_at": 37813.68470977583,
+    "person": {
+      "ident": 2,
+      "position": { "lat": 51.98952904695685, "lon": 10.279748734757804 },
+      "corona_likelihood": 0.38009470286328173,
+      "severity": 0.8794304535465386
+    },
+    "pickup_at": 1.9213302202935125,
+    "delivery_at": 1.9213302202935125,
+    "is_handled": true,
+    "hospital_id": 5
+  },
+  "3": {
+    "ident": 3,
+    "filed_at": 75011.32908349663,
+    "person": {
+      "ident": 3,
+      "position": { "lat": 50.126542777834935, "lon": 9.667376945423436 },
+      "corona_likelihood": 0.9093258987037466,
+      "severity": 0.9528732830167954
+    },
+    "pickup_at": 0.7613585849865683,
+    "delivery_at": 0.7613585849865683,
+    "is_handled": true,
+    "hospital_id": 9
+  },
+  "4": {
+    "ident": 4,
+    "filed_at": 35271.53216874411,
+    "person": {
+      "ident": 4,
+      "position": { "lat": 48.59643505421015, "lon": 10.963238156521175 },
+      "corona_likelihood": 0.0463419860962313,
+      "severity": 0.2117784192868415
+    },
+    "pickup_at": 0.8092263091984241,
+    "delivery_at": 0.8092263091984241,
+    "is_handled": true,
+    "hospital_id": 6
+  },
+  "5": {
+    "ident": 5,
+    "filed_at": 28686.338867213624,
+    "person": {
+      "ident": 5,
+      "position": { "lat": 48.53293244038045, "lon": 10.43725350695273 },
+      "corona_likelihood": 0.8059937538356456,
+      "severity": 0.4276544358822567
+    },
+    "pickup_at": 1.470161300855564,
+    "delivery_at": 1.470161300855564,
+    "is_handled": true,
+    "hospital_id": 6
+  },
+  "6": {
+    "ident": 6,
+    "filed_at": 36122.84680287109,
+    "person": {
+      "ident": 6,
+      "position": { "lat": 49.79435024424862, "lon": 8.088591352921092 },
+      "corona_likelihood": 0.9899877390661885,
+      "severity": 0.9261169624738098
+    },
+    "pickup_at": 1.754810975998407,
+    "delivery_at": 1.754810975998407,
+    "is_handled": true,
+    "hospital_id": 0
+  },
+  "7": {
+    "ident": 7,
+    "filed_at": 84718.07886487381,
+    "person": {
+      "ident": 7,
+      "position": { "lat": 48.36285541823557, "lon": 11.417154431838402 },
+      "corona_likelihood": 0.5915491228299619,
+      "severity": 0.20166661033715483
+    },
+    "pickup_at": 1.8033078019120754,
+    "delivery_at": 1.8033078019120754,
+    "is_handled": true,
+    "hospital_id": 6
+  },
+  "8": {
+    "ident": 8,
+    "filed_at": 59190.43919702659,
+    "person": {
+      "ident": 8,
+      "position": { "lat": 50.540913415508186, "lon": 9.552967275065553 },
+      "corona_likelihood": 0.3347256570659086,
+      "severity": 0.04877378863912485
+    },
+    "pickup_at": 0.9736118211178268,
+    "delivery_at": 0.9736118211178268,
+    "is_handled": true,
+    "hospital_id": 9
+  },
+  "9": {
+    "ident": 9,
+    "filed_at": 10625.420541746611,
+    "person": {
+      "ident": 9,
+      "position": { "lat": 51.56800444736168, "lon": 8.945765415701633 },
+      "corona_likelihood": 0.6990744505704581,
+      "severity": 0.06238116743862698
+    },
+    "pickup_at": 1.176052057051802,
+    "delivery_at": 1.176052057051802,
+    "is_handled": true,
+    "hospital_id": 5
+  }
+}

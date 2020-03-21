@@ -31,9 +31,13 @@ def main(args):
 
     project_instance = Instance()
     project_instance.scenario = args.scenario
-    project_instance.hospitals = read_objects("data/hospitals/hospitals-autogen.json", Hospital)
+    project_instance.hospitals = read_objects(
+        "data/hospitals/hospitals-autogen.json", Hospital
+    )
 
-    project_instance.requests = read_objects("data/patient_requests/requests.json", Request)
+    project_instance.requests = read_objects(
+        "data/patient_requests/requests.json", Request
+    )
     project_instance.generate_vehicles()
     project_instance.generate_bed_updates()
 
@@ -50,12 +54,11 @@ def main(args):
         write_output(project_instance)
 
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Input parameters for the algorithm")
     parser.add_argument("scenario")
-    parser.add_argument("-visualize", default = False)
-    parser.add_argument("-output", default = True)
+    parser.add_argument("-visualize", default=False)
+    parser.add_argument("-output", default=True)
 
     args = parser.parse_args()
 
