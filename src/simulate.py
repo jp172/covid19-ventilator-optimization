@@ -55,4 +55,4 @@ def simulate(instance, scheduler):
         snapshots.append(
             Snapshot(hospital.ident, event.filed_at, hospital.capacity_coefficient)
         )
-    instance.snapshots = snapshots
+    return snapshots

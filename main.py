@@ -41,16 +41,16 @@ def main(args):
 
     if args.compare:
         print("Start simulation of both schedulers")
-        compare(project_instance)
+        _, snapshots = compare(project_instance)
     else:
         print("Start simulation capacity scheduler")
-        simulate(project_instance, CapacityScheduler())
+        snapshots = simulate(project_instance, CapacityScheduler())
 
     evaluate(project_instance)
 
     if args.visualize:
         print("Start visualizing")
-        visualize(project_instance)
+        visualize(project_instance, snapshots)
 
     if args.output:
         write_output(project_instance)
