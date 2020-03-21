@@ -3,7 +3,7 @@ import argparse
 from enum import Enum
 
 
-from src.solve import solve
+from src.simulate import simulate
 from src.visualize import visualize
 from src.evaluate import evaluate
 from src.write_out import write_output
@@ -38,8 +38,8 @@ def main(args):
     project_instance.generate_vehicles()
     project_instance.generate_updates()
 
-    print("Start solving")
-    solve(project_instance, SimpleScheduler())
+    print("Start simulation")
+    simulate(project_instance, SimpleScheduler())
 
     evaluate(project_instance)
 
