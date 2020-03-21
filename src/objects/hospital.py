@@ -8,6 +8,8 @@ from .position import Position
 @dataclass
 class Hospital:
     ident: str
+    position: Position
     nbr_free_beds: int
     nbr_free_corona_beds: int
-    position: Position
+    nbr_corona_pat_in_normal_bed: int
+    capacity_coefficient: float
