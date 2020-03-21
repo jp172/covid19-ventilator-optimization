@@ -7,5 +7,4 @@ def compare(instance):
     simple_scheduler = SimpleScheduler()
     capacity_scheduler = CapacityScheduler()
 
-    simulate(instance, simple_scheduler)
-    simulate(instance, capacity_scheduler)
+    return simulate(instance, simple_scheduler), simulate(instance, capacity_scheduler)
