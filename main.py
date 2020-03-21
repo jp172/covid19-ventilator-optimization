@@ -6,12 +6,13 @@ from enum import Enum
 from src.simulate import simulate
 from src.visualize import visualize
 from src.evaluate import evaluate
+from src.compare import compare
 from src.write_out import write_output
 from src.objects.instance import Instance
 from src.objects.request import Request
 from src.objects.hospital import Hospital
 from src.helper_functions.read_data import read_objects
-from src.schedulers.simple_scheduler import SimpleScheduler
+from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 
 
 class Scenario(Enum):
@@ -38,8 +39,12 @@ def main(args):
     project_instance.generate_vehicles()
     project_instance.generate_updates()
 
-    print("Start simulation")
-    simulate(project_instance, SimpleScheduler())
+    if args.compare:
+        print("Start simulation of both schedulers")
+        compare(project_instance)
+    else:
+        print("Start simulation capacity scheduler")
+        simulate(project_instance, CapacityScheduler())
 
     evaluate(project_instance)
 
@@ -54,6 +59,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Input parameters for the algorithm")
     parser.add_argument("scenario")
+    parser.add_argument("-compare", default=False)
     parser.add_argument("-visualize", default=False)
     parser.add_argument("-output", default=True)
 

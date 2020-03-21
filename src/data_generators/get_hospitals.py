@@ -34,7 +34,7 @@ hospital_dict = {
     for index, data in enumerate(coords)
 }
 
-with open("data/hospitals/hospitals.json", "w") as json_file:
+with open("hospitals.json", "w") as json_file:
     json.dump(hospital_dict, json_file)
 
 # Convert coordinates into numpy array
