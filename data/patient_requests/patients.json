@@ -1,1 +1,144 @@
-{"patients": [{"id": "0", "latitude": "50.2279849485894", "longitude": "8.339490426621385", "corona_likelihood": "0.07190195090627305", "severity": "0.09764458159598643", "assigned": "False", "hospital_id": -1}, {"id": "1", "latitude": "48.75591611218449", "longitude": "8.72859322189494", "corona_likelihood": "0.9305375818132132", "severity": "0.5242993776760196", "assigned": "False", "hospital_id": -1}, {"id": "2", "latitude": "49.61989503843172", "longitude": "9.821401888632625", "corona_likelihood": "0.08096082159366569", "severity": "0.20428314505330292", "assigned": "False", "hospital_id": -1}, {"id": "3", "latitude": "51.237997901864105", "longitude": "10.363038432438952", "corona_likelihood": "0.18785316318891399", "severity": "0.032278448960456285", "assigned": "False", "hospital_id": -1}, {"id": "4", "latitude": "51.501077107849724", "longitude": "9.707116654227075", "corona_likelihood": "0.5435579298091967", "severity": "0.024143693055471704", "assigned": "False", "hospital_id": -1}, {"id": "5", "latitude": "51.70080286163841", "longitude": "8.927047643621618", "corona_likelihood": "0.09065449701897299", "severity": "0.4822105912382322", "assigned": "False", "hospital_id": -1}, {"id": "6", "latitude": "51.0633742927936", "longitude": "10.93457621045114", "corona_likelihood": "0.35647299950695455", "severity": "0.2110622846582616", "assigned": "False", "hospital_id": -1}, {"id": "7", "latitude": "51.153273090550925", "longitude": "11.396483758064488", "corona_likelihood": "0.4990880511419916", "severity": "0.4002862728996943", "assigned": "False", "hospital_id": -1}, {"id": "8", "latitude": "51.12495726093945", "longitude": "10.160200048472246", "corona_likelihood": "0.24170107927795947", "severity": "0.3000126904702569", "assigned": "False", "hospital_id": -1}, {"id": "9", "latitude": "48.80640167960401", "longitude": "8.433607635379277", "corona_likelihood": "0.5413476041324634", "severity": "0.7232746844690741", "assigned": "False", "hospital_id": -1}]}
+{
+  "patients": [
+    {
+      "ident": 0,
+      "position": 50.291348946781476,
+      "corona_likelihood": 11.245226181137374,
+      "severity": 0.8113668895515745,
+      "is_assigned": 0.315483674158307,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 43513.01465277455,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 1,
+      "position": 48.900300011824,
+      "corona_likelihood": 8.232194491860273,
+      "severity": 0.6708196356527872,
+      "is_assigned": 0.8230672393201032,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 12928.222118245825,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 2,
+      "position": 49.5668773759712,
+      "corona_likelihood": 9.593337639212578,
+      "severity": 0.5423057868590809,
+      "is_assigned": 0.3086101815279424,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 71490.42131285276,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 3,
+      "position": 50.41111037895424,
+      "corona_likelihood": 11.879725511860485,
+      "severity": 0.5489107286817686,
+      "is_assigned": 0.6771063832797865,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 66682.925022831,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 4,
+      "position": 48.62107673412552,
+      "corona_likelihood": 9.609448104822153,
+      "severity": 0.8203564030933197,
+      "is_assigned": 0.9784690489570064,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 16500.330710190457,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 5,
+      "position": 48.779416004957994,
+      "corona_likelihood": 11.48595479688775,
+      "severity": 0.10164570762670377,
+      "is_assigned": 0.9773177996147978,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 46119.17418137607,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 6,
+      "position": 51.37917848570909,
+      "corona_likelihood": 9.04035170219832,
+      "severity": 0.5533584165770563,
+      "is_assigned": 0.040529366529229005,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 47406.333072543326,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 7,
+      "position": 49.271856585522734,
+      "corona_likelihood": 10.298850303716373,
+      "severity": 0.024069654989780087,
+      "is_assigned": 0.7727990396026715,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 25864.936586086264,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 8,
+      "position": 49.712841372955346,
+      "corona_likelihood": 10.149049654573904,
+      "severity": 0.06333949048794496,
+      "is_assigned": 0.18296783205716427,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 81752.33239570392,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    },
+    {
+      "ident": 9,
+      "position": 51.561013134228276,
+      "corona_likelihood": 8.41766636440439,
+      "severity": 0.11202570867986528,
+      "is_assigned": 0.6432175341930012,
+      "is_delivered": false,
+      "assigned_hospital_id": 1,
+      "action_times": {
+        "request_filed": 18393.58421531202,
+        "picked_up": -1,
+        "delivered": -1
+      }
+    }
+  ]
+}
