@@ -31,9 +31,10 @@ def solve(instance, scheduler):
         # it is a request, so process request!
         if el[2] is True:
             request = instance.requests[str(el[0])]
-            hospital = scheduler.assign_request(
+            ranked_hospital_proposal = scheduler.assign_request(
                 instance.hospitals, request, max_vehicle_range
             )
+            hospital = ranked_hospital_proposal.proposal_dict[1]
 
             # set person/request properties
             request.is_handled = True

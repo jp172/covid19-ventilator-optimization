@@ -1,4 +1,5 @@
 from ..helper_functions.coordinates_to_distance import get_distance
+from ..objects.proposal import RankedProposal
 from .utils import get_feasible_hospitals
 
 
@@ -10,11 +11,9 @@ class SimpleScheduler:
             hospitals, request.person.position, max_vehicle_range
         )
 
-        min_dist = 1e12
-        nearest_hospital = None
+        sorted_hospitals = sorted(
+            feasible_hospitals,
+            key=lambda hosp: get_distance(hosp.position, request.person.position),
+        )
 
-        for hospital in feasible_hospitals:
-            if get_distance(hospital.position, request.person.position) < min_dist:
-                nearest_hospital = hospital
-
-        return nearest_hospital
+        return RankedProposal(sorted_hospitals[:3])

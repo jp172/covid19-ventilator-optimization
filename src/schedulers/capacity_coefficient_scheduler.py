@@ -1,4 +1,5 @@
 from .utils import get_feasible_hospitals
+from ..objects.proposal import RankedProposal
 
 
 class CapacityScheduler:
@@ -7,11 +8,8 @@ class CapacityScheduler:
             hospitals, request.person.position, max_vehicle_range
         )
 
-        min_coeff = 1e3
-        best_hospital = None
+        sorted_hospitals = sorted(
+            feasible_hospitals, key=lambda hosp: hosp.capacity_coefficient
+        )
 
-        for hospital in feasible_hospitals:
-            if hospital.capacity_coefficient < min_coeff:
-                best_hospital = hospital
-
-        return best_hospital
+        return RankedProposal(sorted_hospitals[:3])

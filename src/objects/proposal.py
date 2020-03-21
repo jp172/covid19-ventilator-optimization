@@ -15,4 +15,4 @@ class RankedProposal:
             proposed_hospitals, key=lambda hosp: hosp.capacity_coefficient
         )
         for index, proposal in enumerate(sorted_proposals):
-            self.proposal_dict[index] = proposal
+            self.proposal_dict[index + 1] = proposal
