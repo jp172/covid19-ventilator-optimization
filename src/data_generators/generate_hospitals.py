@@ -6,9 +6,9 @@ from src.objects.position import Position
 
 CAPACITY_SCALAR = 0.25
 
-
 def generate_hospitals(write=True):
-    nbr_hospitals = 1000
+
+    nbr_hospitals = 100
 
     # coordinate ranges
     lat_range = (48, 52)

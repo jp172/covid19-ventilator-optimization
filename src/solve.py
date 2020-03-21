@@ -51,6 +51,7 @@ def solve(instance, scheduler):
             request.pickup_at = pickup_at
             request.delivery_at = delivery_at
 
+
             hospital.nbr_free_beds -= 1
             hospital.nbr_free_corona_beds -= 1
 
@@ -69,4 +70,4 @@ def solve(instance, scheduler):
         ]
         snapshots[cur_time] = hospital_occ
 
-    print(snapshots)
+    instance.snapshots = snapshots
