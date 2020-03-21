@@ -1,5 +1,4 @@
 
 
-def visualize(result_data):
+def visualize(project_instance):
     print("Julius' fancy vis")
-    return

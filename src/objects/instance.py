@@ -11,4 +11,13 @@ class Instance:
     hospitals : dict
     requests : dict
     vehicles : dict
-    time_frame : tuple
+
+    def generate_vehicles(self):
+        for h in hospitals.values():
+            vehicles[h.ident] = Vehicle(
+                ident = h.ident,
+                speed = 50,
+                max_range = 50,
+                position = h.position,
+                depot = h.position
+            )

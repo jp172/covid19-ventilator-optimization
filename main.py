@@ -5,7 +5,9 @@ from enum import Enum
 from src.write import write
 from src.solve import solve
 from src.visualize import visualize
-from src.objects.person import Person
+from src.evaluate import evaluate
+from src.objects.instance import Instance
+from src.objects.request import Request
 from src.objects.hospital import Hospital
 from src.helper_functions.read_data import read_objects
 from src.schedulers.simple_scheduler import SimpleScheduler
@@ -17,8 +19,8 @@ class Scenario(Enum):
     NORMAL = "normal"
 
 
-# this main file should just run a simulation given the following data.
-# it should parse the following input specs nicely as arguments
+# this main reads data, solves the scheduling problem, writes json output, and
+# will visualize the results sooooon
 
 
 def main(args):
@@ -26,15 +28,20 @@ def main(args):
     if args.scenario not in [s.value for s in Scenario]:
         raise ValueError
 
-    hospital_dict = read_objects("data/hospitals/hospitals.json", Hospital)
-    person_dict = read_objects("data/patient_requests/patients.json", Person)
+    project_instance = Instance()
+    project_instance.scenario = args.scenario
+    project_instance.hospitals = read_objects("data/hospitals/hospitals.json", Hospital)
+    project_instance.requests = read_objects("data/patient_requests/requests.json", Request)
+    project_instance.generate_vehicles()
 
     print("Start solving")
-    result_data = solve(hospital_dict, person_dict, SimpleScheduler(), args.scenario)
+    solve(project_instance, SimpleScheduler())
+
+    evaluate(project_instance)
 
     if args.visualize:
         print("Start visualizing")
-        visualize(result_data)
+        visualize(project_instance)
 
     write_output(args.output_file)
 

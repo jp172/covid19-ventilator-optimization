@@ -6,15 +6,12 @@ from ..objects.person import Person
 from ..objects.position import Position
 
 
-def generate_patients():
+def generate_patients(write = True):
     nbr_patients = 10
 
     # coordinate ranges
     lat_range = (48, 52)
     lon_range = (8, 12)
-
-    # range where the request file time is taken from
-    time_range = (0, 100000)
 
     data = {}
 
@@ -26,12 +23,11 @@ def generate_patients():
                 random.uniform(lon_range[0], lon_range[1]),
             ),
             corona_likelihood=random.random(),
-            severity=random.random(),
-            is_assigned=False,
-            is_delivered=False,
+            severity=random.random()
         )
-        p.action_times.request_filed = random.randint(time_range[0], time_range[1])
-        data[p.ident] = p.to_dict()
 
-    with open("data/patient_requests/patients.json", "w") as f:
-        json.dump(data, f)
+        data[p.ident] = p.to_dict()
+    if write:
+        with open("data/patient_requests/patients.json", "w") as f:
+            json.dump(data, f)
+    return data

@@ -7,9 +7,10 @@ from .person import Person
 @dataclass_json
 @dataclass
 class Request:
+    ident : int
     filed_at: int
-    pickup_at : int
-    delivery_at : int
-    is_handled: bool = False
-    hospital_id : str
     person: Person
+    pickup_at : int = -1
+    delivery_at : int = -1
+    is_handled: bool = False
+    hospital_id : str = ""

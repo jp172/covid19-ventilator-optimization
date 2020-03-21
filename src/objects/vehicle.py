@@ -9,6 +9,7 @@ from .position import Position
 @dataclass_json
 @dataclass
 class Vehicle:
+    ident : int
     max_range: int
     position: Position
     depot_position: Position
