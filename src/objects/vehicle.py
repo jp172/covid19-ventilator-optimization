@@ -13,5 +13,5 @@ class Vehicle:
     max_range: int
     position: Position
     depot_position: Position
-    speed : int # in km/h
+    speed : int # in km/SECOND, yes, second
     locations: List[Position] = field(default_factory=list)

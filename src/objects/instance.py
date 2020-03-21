@@ -18,7 +18,7 @@ class Instance:
         for h in self.hospitals.values():
             v = Vehicle(
                 ident = h.ident,
-                speed = 50,
+                speed = 50 / 3600,
                 max_range = 50,
                 position = h.position,
                 depot_position = h.position
