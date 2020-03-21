@@ -6,5 +6,6 @@ class SimpleScheduler:
     def assign_request(self, hospitals, request):
         # this takes just the nearest hospital
         return min(
-            hospitals.values(), key=lambda h: get_distance(h.position, request.person.position)
+            hospitals.values(),
+            key=lambda h: get_distance(h.position, request.person.position),
         )

@@ -6,7 +6,7 @@ from ..objects.person import Person
 from ..objects.position import Position
 
 
-def generate_patients(write = True):
+def generate_patients(write=True):
     nbr_patients = 10
 
     # coordinate ranges
@@ -23,7 +23,7 @@ def generate_patients(write = True):
                 random.uniform(lon_range[0], lon_range[1]),
             ),
             corona_likelihood=random.random(),
-            severity=random.random()
+            severity=random.random(),
         )
 
         data[p.ident] = p.to_dict()

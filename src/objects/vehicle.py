@@ -9,9 +9,9 @@ from .position import Position
 @dataclass_json
 @dataclass
 class Vehicle:
-    ident : int
+    ident: int
     max_range: int
     position: Position
     depot_position: Position
-    speed : int # in km/SECOND, yes, second
+    speed: int  # in km/h
     locations: List[Position] = field(default_factory=list)
