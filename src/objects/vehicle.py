@@ -10,7 +10,6 @@ from .position import Position
 @dataclass
 class Vehicle:
     max_range: int
-    is_corona_vehicle: bool
     position: Position
     depot_position: Position
     locations: List[Position] = []
