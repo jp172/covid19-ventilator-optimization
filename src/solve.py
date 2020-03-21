@@ -7,6 +7,7 @@ from .helper_functions.update_objects import (
     create_update_object_for_request,
 )
 from .objects.event import Event
+from .objects.snapshot import Snapshot
 
 
 def create_events(instance):
@@ -22,15 +23,13 @@ def create_events(instance):
 
 
 def solve(instance, scheduler):
-    snapshots = {}
+    snapshots = []
 
     max_vehicle_range = max(
         list(map(lambda x: x.max_range, instance.vehicles.values()))
     )
 
     for event in create_events(instance):
-
-        cur_time = round(event.filed_at)
 
         # it is a request, so process request!
         if event.request:
@@ -39,22 +38,21 @@ def solve(instance, scheduler):
                 instance.hospitals, request, max_vehicle_range
             )
             hospital = ranked_hospital_proposal.proposal_dict[1]
-            update = create_update_object_for_request(request, hospital)
+            curr_update = create_update_object_for_request(request, hospital)
             vehicle = vehicle_scheduler(instance.vehicles, request)
 
-            update_objects_after_request(hospital, update, vehicle, request)
+            update_objects_after_request(hospital, curr_update, vehicle, request)
 
         # event is a bed update. update hospital!
-        elif event.update:
+        else:
+            curr_update = event.update
             hospital = instance.hospitals[event.update.hospital_ident]
-            update_hospital(hospital, event.update)
+            update_hospital(hospital, curr_update)
 
         # for visualisation: make a snapshot of the current time.
         # hospitals -> id, nbr freebeds, nbr free corona beds,
-        hospital_occ = [
-            [key, hospital.nbr_free_beds, hospital.nbr_free_corona_beds]
-            for key, hospital in instance.hospitals.items()
-        ]
-        snapshots[cur_time] = hospital_occ
 
+        snapshots.append(
+            Snapshot(hospital.ident, event.filed_at, hospital.capacity_coefficient)
+        )
     instance.snapshots = snapshots
