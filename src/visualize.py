@@ -2,7 +2,7 @@
 # skala verschiebt sich und ist kacke
 # Zeit sollte in Tagen sein:
     # generiere Zeiten zu richtigen Tagen
-    
+
 #
 
 
@@ -10,10 +10,9 @@
 import plotly.express as px
 import pandas as pd
 
-def add_cur_hospital_info(data, instance,  hospital_infos, cur_time):
-    for hlist in hospital_infos:
-        h = instance.hospitals[hlist[0]]
-        data.append([cur_time, h.ident, h.position.lat, h.position.lon, 100 - hlist[1]])
+def add_cur_hospital_info(data, instance,  snapshot, cur_time):
+    h = instance.hospitals[str(snapshot.hospital_ident)]
+    data.append([cur_time, h.ident, h.position.lat, h.position.lon, snapshot.capacity_coefficient])
 
 x_min = 5.7
 x_max = 15.5
@@ -22,7 +21,7 @@ y_max = 55
 
 def hospital_visualization(instance, start, end, ticks):
 
-    time_steps = sorted([t for t in instance.snapshots])
+    instance.snapshots = sorted(instance.snapshots, key = lambda s : s.filed_at)
     data_list = []
 
     i = 0
@@ -30,9 +29,9 @@ def hospital_visualization(instance, start, end, ticks):
 
         cur_time = round(start + t / ticks * (end - start))
 
-        while i + 1 < len(time_steps) and time_steps[i + 1] <= cur_time:
+        while i + 1 < len(instance.snapshots) and instance.snapshots[i + 1].filed_at <= cur_time:
+            add_cur_hospital_info(data_list, instance, instance.snapshots[i], cur_time)
             i += 1
-        add_cur_hospital_info(data_list, instance, instance.snapshots[time_steps[i]], cur_time)
 
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'y', 'x', 'capacity_score'])
 
