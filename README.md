@@ -26,13 +26,3 @@ You can turn on/off visualization using this switch. To enable visualization use
 You can turn on/off output with this switch. Usage example:
 
 `python main.py normal -output=True`
-
-## Troubleshooting
-
-Add
-
-```
-export PYTHONPATH="$PYTHONPATH:/path/to/covid19-hospital-scheduler/src"
-```
-
-to your bashrc plzz.
