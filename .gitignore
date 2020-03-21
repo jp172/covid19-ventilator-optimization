@@ -1,2 +1,5 @@
 __pycache__
 .DS_Store
+data/output/out.json
+data/visualization/patients.html
+data/visualization/hospitals.html
