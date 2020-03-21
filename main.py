@@ -43,6 +43,7 @@ def main(args):
     if args.visualize:
         print("Start visualizing")
         visualize(project_instance)
+        
     if args.output:
         write_output(project_instance)
 
