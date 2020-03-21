@@ -65,8 +65,8 @@ def solve(instance, scheduler):
         # for visualisation: make a snapshot of the current time.
         # hospitals -> id, nbr freebeds, nbr free corona beds,
         hospital_occ = [
-            [hospital.ident, hospital.nbr_free_beds, hospital.nbr_free_corona_beds]
-            for hospital in instance.hospitals.values()
+            [key, hospital.nbr_free_beds, hospital.nbr_free_corona_beds]
+            for key, hospital in instance.hospitals.items()
         ]
         snapshots[cur_time] = hospital_occ
 
