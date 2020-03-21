@@ -3,3 +3,4 @@ __pycache__
 data/output/out.json
 data/visualization/patients.html
 data/visualization/hospitals.html
+*.swp
