@@ -35,8 +35,13 @@ def hospital_visualization(instance, start, end, ticks):
             sizing="stretch",
             opacity=0.5,
             layer="below")
-    #fig.update_traces(marker=dict(size = 20))
+    fig.update_traces(marker=dict(size = 10))
+    for frame in fig.frames:
+        for i in range(len(frame.data)):
+            frame.data[i]['marker']['symbol'] = 'square'
+
     #fig.show()
+
     html_dump = fig.to_html()
     with open("data/visualization/hospitals.html", "w") as f:
         f.write(html_dump)
