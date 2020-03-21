@@ -2,7 +2,7 @@ from ..helper_functions.coordinates_to_distance import get_distance
 
 
 class SimpleScheduler:
-    # todo: on given all the objects, return the most suitable hospital ID
+    # disponents schedule patients to bed as long as there are available beds in nearby hospitals
     def assign_request(self, hospitals, request):
         # this takes just the nearest hospital
         return min(
