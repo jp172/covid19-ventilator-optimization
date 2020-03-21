@@ -2,7 +2,8 @@
 
 import json
 import random
-from objects.person import Person
+
+from ..objects.person import Person
 
 nbr_patients = 10
 

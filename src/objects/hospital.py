@@ -1,6 +1,6 @@
 import json
 
-from position import Position
+from .position import Position
 
 
 class Hospital:

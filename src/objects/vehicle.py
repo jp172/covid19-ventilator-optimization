@@ -3,7 +3,7 @@ from dataclasses_json import dataclass_json
 
 from typing import List
 
-from position import Position
+from .position import Position
 
 
 @dataclass_json

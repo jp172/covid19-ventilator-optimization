@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
-from person import Person
+from .person import Person
 
 
 @dataclass_json

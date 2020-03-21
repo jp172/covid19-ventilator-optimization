@@ -1,4 +1,4 @@
-from helper_functions.coordinates_to_distance import get_distance
+from ..helper_functions.coordinates_to_distance import get_distance
 
 
 class SimpleScheduler:
