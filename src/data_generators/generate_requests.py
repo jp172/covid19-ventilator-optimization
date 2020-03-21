@@ -6,10 +6,11 @@ from ..objects.request import Request
 
 # range where the request file time is taken from
 time_range = (0, 100000)
+nbr_patiens = 20000
 
 
 def generate_requests(write=True):
-    patients = generate_patients(write=False)
+    patients = generate_patients(nbr_patients, write=False)
 
     reqs = {}
 

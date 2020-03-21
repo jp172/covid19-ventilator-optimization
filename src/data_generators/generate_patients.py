@@ -6,9 +6,7 @@ from ..objects.person import Person
 from ..objects.position import Position
 
 
-def generate_patients(write=True):
-    nbr_patients = 2000
-
+def generate_patients(nbr_patients, write=True):
     # coordinate ranges
     lat_range = (48, 52)
     lon_range = (8, 12)
