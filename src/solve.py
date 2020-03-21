@@ -41,6 +41,7 @@ def solve(instance, scheduler):
             r.pickup_at = pickup_at
             r.delivery_at = delivery_at
 
+
             hospital.nbr_free_beds -= 1
             hospital.nbr_free_corona_beds -= 1
 
@@ -54,9 +55,9 @@ def solve(instance, scheduler):
         # for visualisation: make a snapshot of the current time.
         # hospitals -> id, nbr freebeds, nbr free corona beds,
         hospital_occ = [
-            [h.ident, h.nbr_free_beds, h.nbr_free_corona_beds]
-            for h in instance.hospitals.values()
+            [key, h.nbr_free_beds, h.nbr_free_corona_beds]
+            for key, h in instance.hospitals.items()
         ]
         snapshots[cur_time] = hospital_occ
 
-    print(snapshots)
+    instance.snapshots = snapshots

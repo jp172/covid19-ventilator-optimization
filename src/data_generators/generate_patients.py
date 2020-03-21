@@ -7,7 +7,7 @@ from ..objects.position import Position
 
 
 def generate_patients(write=True):
-    nbr_patients = 10
+    nbr_patients = 2000
 
     # coordinate ranges
     lat_range = (48, 52)

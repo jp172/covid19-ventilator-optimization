@@ -6,7 +6,7 @@ from src.objects.position import Position
 
 
 def generate_hospitals(write=True):
-    nbr_hospitals = 10
+    nbr_hospitals = 100
 
     # coordinate ranges
     lat_range = (48, 52)
