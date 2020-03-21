@@ -5,19 +5,21 @@ from src.helper_functions.ab_duration import get_duration
 
 def solve(instance, simulator):
 
-
     # do the simulation
     updates_requests = []
-    for r in instance.requests:
+
+    for r in instance.requests.values():
         updates_requests.append([r.ident, r.filed_at, True])
     for b in instance.bed_updates.values():
         updates_requests.append([b.ident, b.filed_at, False])
 
-    reqs = sorted(reqs, key = lambda r : r[1])
+    updates_requests = sorted(updates_requests, key = lambda r : r[1])
 
-    for el in updates_and_requests:
+    for el in updates_requests:
+
+        # it is a request, so process request!
         if el[2] == True:
-            r = instance.requests[el[0]]
+            r = instance.requests[str(el[0])]
             hospital = simulator.assign_request(instance.hospitals, r)
 
             # set person/request properties
@@ -34,6 +36,6 @@ def solve(instance, simulator):
         # it is a bed update. update hospital!
         else:
             b = instance.bed_updates[el[0]]
-            h = instance.hospitals[b.hospital_id]
+            h = instance.hospitals[b.hospital_key]
             h.nbr_free_beds = b.nbr_free_beds
             h.nbr_free_corona_beds = b.nbr_free_corona_beds

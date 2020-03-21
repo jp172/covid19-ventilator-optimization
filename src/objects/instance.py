@@ -27,10 +27,11 @@ class Instance:
 
     def generate_bed_updates(self):
 
-        time_frame = [min(r.filed_at for r in requests.values()), max(r.filed_at for r in requests.values())]
+        time_frame = [min(r.filed_at for r in self.requests.values()), max(r.filed_at for r in self.requests.values())]
 
         cnt = 0
-        for h in hospitals.values():
+        for key in self.hospitals:
+            h = self.hospitals[key]
 
             # 10 updates over the time frame
             for i in range(10):
@@ -38,11 +39,11 @@ class Instance:
 
                 b = BedsUpdate(
                     ident = cnt,
-                    hospital_id = h.ident,
+                    hospital_key = key,
                     filed_at = time,
-                    nbr_beds = 100 - 10 * i,
-                    nbr_corona_beds = 50 - 5 * i
+                    nbr_free_beds = 100 - 10 * i,
+                    nbr_free_corona_beds = 50 - 5 * i
                 )
-                bed_updates[cnt] = b
+                self.bed_updates[cnt] = b
 
                 cnt += 1
