@@ -1,5 +1,9 @@
+from math import sin, asin, cos, sqrt, radians
+
 # distance in kilometers between two positions
 # position is given as spherical coordinates (lat, lon)
+
+
 def get_distance(a, b):
     (lat1, lon1) = a
     (lat2, lon2) = b

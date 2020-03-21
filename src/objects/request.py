@@ -1,16 +1,13 @@
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
-from typing import List
-
 from position import Position
 
 
 @dataclass_json
 @dataclass
-class Vehicle:
-    max_range: int
-    is_corona_vehicle: bool
+class Request:
+    filed_at: int
     position: Position
-    depot_position: Position
-    locations: List[Position] = []
+    severity: float
+    corona_likelihood: float
