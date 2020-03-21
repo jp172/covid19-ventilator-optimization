@@ -36,7 +36,7 @@ def main(args):
         "data/patient_requests/requests.json", Request
     )
     project_instance.generate_vehicles()
-    project_instance.generate_bed_updates()
+    project_instance.generate_updates()
 
     print("Start solving")
     solve(project_instance, SimpleScheduler())
