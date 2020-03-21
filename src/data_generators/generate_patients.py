@@ -2,6 +2,7 @@
 import json
 import random
 
+from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
 
