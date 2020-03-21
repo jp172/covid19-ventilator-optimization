@@ -1,8 +1,10 @@
+from random import randint
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json
 
+from ..helper_functions.update_for_case import get_random_update
+
 from .vehicle import Vehicle
-from .bedsupdate import BedsUpdate
 
 
 @dataclass_json
@@ -11,39 +13,30 @@ class Instance:
     hospitals: dict = field(default_factory=dict)
     requests: dict = field(default_factory=dict)
     vehicles: dict = field(default_factory=dict)
-    bed_updates: dict = field(default_factory=dict)
+    updates: dict = field(default_factory=dict)
 
     def generate_vehicles(self):
-        for h in self.hospitals.values():
+        for hospital in self.hospitals.values():
             v = Vehicle(
-                ident=h.ident,
+                ident=hospital.ident,
                 speed=50,
                 max_range=50,
-                position=h.position,
-                depot_position=h.position,
+                position=hospital.position,
+                depot_position=hospital.position,
             )
             self.vehicles[v.ident] = v
 
-    def generate_bed_updates(self):
+    def generate_updates(self):
 
         time_frame = [
             min(r.filed_at for r in self.requests.values()),
             max(r.filed_at for r in self.requests.values()),
         ]
 
-        cnt = 0
         for key in self.hospitals:
             # 10 updates over the time frame
-            for i in range(10):
-                time = round(time_frame[0] + i / 10 * time_frame[1] - time_frame[0])
+            for ind in range(10):
+                time = randint(int(time_frame[0]), int(time_frame[1]))
+                update = get_random_update(time, key)
 
-                b = BedsUpdate(
-                    ident=cnt,
-                    hospital_key=key,
-                    filed_at=time,
-                    nbr_free_beds=100 - 10 * i,
-                    nbr_free_corona_beds=50 - 5 * i,
-                )
-                self.bed_updates[cnt] = b
-
-                cnt += 1
+                self.updates[f"{key}#{ind}"] = update
