@@ -6,6 +6,10 @@ def add_cur_hospital_info(data, instance,  hospital_infos, cur_time):
         h = instance.hospitals[hlist[0]]
         data.append([cur_time, h.ident, h.position.lat, h.position.lon, 100 - hlist[1]])
 
+x_min = 5.7
+x_max = 15.5
+y_min = 47.2
+y_max = 55
 
 def hospital_visualization(instance, start, end, ticks):
 
@@ -24,14 +28,14 @@ def hospital_visualization(instance, start, end, ticks):
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'y', 'x', 'capacity_score'])
 
     fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', color = 'capacity_score', color_continuous_scale=[(0.00, "green"),   (0.33, "yellow"),
-                                                     (0.66, "red"), (1.0, "black")], hover_name = 'id', range_x = [8, 12], range_y = [48, 52], width=800, height=1200)
+                                                     (0.66, "red"), (1.0, "black")], hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
     fig.add_layout_image(dict(source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Karte_Deutschland.svg/1000px-Karte_Deutschland.svg.png"),
             xref="x",
             yref="y",
-            x=8,
-            y=52,
-            sizex=4,
-            sizey=4,
+            x = x_min,
+            y = y_max,
+            sizex = (x_max - x_min),
+            sizey = (y_max - y_min),
             sizing="stretch",
             opacity=0.5,
             layer="below")
@@ -71,14 +75,14 @@ def corona_visualization(instance, start, end, ticks):
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'x', 'y'])
 
 
-    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', hover_name = 'id', range_x = [8, 12], range_y = [48, 52], width=800, height=1200)
+    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
     fig.add_layout_image(dict(source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Karte_Deutschland.svg/1000px-Karte_Deutschland.svg.png"),
             xref="x",
             yref="y",
-            x=8,
-            y=52,
-            sizex=4,
-            sizey=4,
+            x = x_min,
+            y = y_max,
+            sizex = (x_max - x_min),
+            sizey = (y_max - y_min),
             sizing="stretch",
             opacity=0.5,
             layer="below")

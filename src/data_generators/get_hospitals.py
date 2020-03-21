@@ -28,11 +28,13 @@ hospital_dict = {
         "nbr_free_beds": randint(0, 20),
         "nbr_free_corona_beds": randint(0, 10),
         "position": {"lat": data[1], "lon": data[0]},
+        "nbr_corona_pat_in_normal_bed": 0,
+        "capacity_coefficient" : 0.0,
     }
     for index, data in enumerate(coords)
 }
 
-with open("hospitals.json", "w") as json_file:
+with open("data/hospitals/hospitals.json", "w") as json_file:
     json.dump(hospital_dict, json_file)
 
 # Convert coordinates into numpy array
