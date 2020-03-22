@@ -11,6 +11,6 @@ def get_feasible_hospitals(hospitals, person_position, max_vehicle_range):
     )
     return list(
         filter(
-            lambda h: h.nbr_free_beds >= 0 or h.nbr_free_corona_beds >= 0, dist_feasible
+            lambda h: h.nbr_free_beds > 0 or h.nbr_free_corona_beds > 0, dist_feasible
         )
     )
