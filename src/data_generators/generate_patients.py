@@ -7,7 +7,7 @@ from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
 
-nbr_patients = 30
+num_patients = 20
 lon_delta = 0.1
 lat_delta = 0.1
 
@@ -32,7 +32,7 @@ def sample_patients(cities):
     patient_cities = random.choices(
             population=list(cities.values()),
             weights=[city.population for city in cities.values()],
-            k=nbr_patients)
+            k=num_patients)
 
     patients = {}
 
