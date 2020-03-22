@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
+from ..globals import NUMBER_FREE_CORONA_BEDS
+
 from .position import Position
 
 
@@ -16,6 +18,8 @@ class Hospital:
     # nbr_corona_beds: int ### needed later in generator !
 
     def calculate_capacity_coefficient(self):
-        if self.nbr_free_corona_beds > 20:
+        if self.nbr_free_corona_beds > NUMBER_FREE_CORONA_BEDS:
             print("Attention: negative capacity. The calculation is fukdup.")
-        self.capacity_coefficient = 1 - (self.nbr_free_corona_beds / 20)
+        self.capacity_coefficient = 1 - (
+            self.nbr_free_corona_beds / NUMBER_FREE_CORONA_BEDS
+        )
