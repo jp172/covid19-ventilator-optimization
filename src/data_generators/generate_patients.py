@@ -7,8 +7,10 @@ from ..helper_functions.write_data import write_objects
 from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
+from ..globals import (
+    NUMBER_PATIENTS
+)
 
-num_patients = 10000
 lon_delta = 0.1
 lat_delta = 0.1
 
@@ -54,7 +56,7 @@ def sample_patients(cities):
     patient_cities = random.choices(
             population=list(cities.values()),
             weights=[city.population * city.population_density for city in cities.values()],
-            k=num_patients)
+            k=NUMBER_PATIENTS)
 
     patients = {}
 
