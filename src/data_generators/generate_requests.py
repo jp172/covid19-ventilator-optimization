@@ -18,10 +18,7 @@ def populate_exponentially_requests(patients):
 
     num_already_infected = 0
     for day in range(num_days):
-        if day == 0:
-            num_newly_infected = num_initially_infected
-        else:
-            num_newly_infected = int(exponential_rate * (1 - 1. * num_already_infected / num_patients) * num_already_infected)
+        num_newly_infected = int(exponential_rate * (1 - 1. * num_already_infected / num_patients) * (num_initially_infected + num_already_infected))
         num_newly_infected = min(num_patients - num_already_infected, num_newly_infected)
         
         infected_per_day[day] = num_newly_infected
