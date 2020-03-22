@@ -1,10 +1,10 @@
-from .globals import ScoreWeight, TARGET_SCORE
+from .globals import ScoreWeight
 
 
 def return_score_for_capacity(capacity):
-    if capacity > 1.75:
+    if capacity > 5:
         return ScoreWeight.HIGH.value
-    elif capacity > 1.5:
+    elif capacity > 2:
         return ScoreWeight.MIDDLE.value
     elif capacity > 1:
         return ScoreWeight.LOW.value
@@ -12,33 +12,11 @@ def return_score_for_capacity(capacity):
         return 0
 
 
-def weighted_evaluation(instance):
-    capacity_coefficients = list(
-        map(lambda hosp: hosp.capacity_coefficient, instance.hospitals.values())
-    )
-    score = sum([return_score_for_capacity(cap) for cap in capacity_coefficients])
-
-    if score < TARGET_SCORE:
-        print(f"The world is saved. (score: {score})")
-    else:
-        print(f"The world is doomed.(score: {score})")
-
-    return score
+def capacity_coefficients(hospitals):
+    return list(map(lambda hosp: hosp.capacity_coefficient, hospitals))
 
 
-def simple_evaluation(instance):
-    capacity_coefficients = list(
-        map(lambda hosp: hosp.capacity_coefficient, instance.hospitals.values())
-    )
-    score = sum([1 for cap in capacity_coefficients if cap > 1])
+def squared_deviation_from_optimal_capacity(instance):
+    coefficients = capacity_coefficients(instance.hospitals.values())
 
-    if score < TARGET_SCORE // 2:
-        print(f"The world is saved. (score: {score})")
-    else:
-        print(f"The world is doomed.(score: {score})")
-
-    return score
-
-
-def quadratic_evaluation(instance):
-    pass
+    return sum([(1 - cap) ** 2 for cap in coefficients])
