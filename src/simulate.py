@@ -33,7 +33,8 @@ def simulate(instance, scheduler):
         snapshots.extend(snaps)
 
         snap = execute_bed_update(instance, time)
-        snapshots.append(snap)
+        if snap:
+            snapshots.append(snap)
 
         time += TIMESTEP
 

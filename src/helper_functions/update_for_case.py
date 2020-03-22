@@ -4,8 +4,7 @@ from ..objects.update import Update
 from ..globals import UPDATE_CASES
 
 
-def get_random_update(time, hospital):
-    case = choice(UPDATE_CASES)
+def get_update_for_case(time, hospital, case):
     if case == "normal_to_corona":
         return Update(
             hospital=hospital,
@@ -25,8 +24,20 @@ def get_random_update(time, hospital):
         )
 
 
-def feasible_bed_updates_for_hospital(hospital):
-    pass
+def get_random_update(time, hospital):
+    case = choice(UPDATE_CASES)
+    get_update_for_case(time, hospital, case)
+
+
+def feasible_update_cases(hospital):
+    cases = []
+    if hospital.nbr_corona_pat_in_normal_bed > 0:
+        cases.append("normal_to_corona")
+    if (
+        hospital.nbr_free_corona_beds < hospital.nbr_corona_beds
+    ):  # SHOULD BE:hospital.nbr_corona_bed
+        cases.append("corona_leaves_hosp")
+    return cases
 
 
 def get_random_bed_update(update_roll, hospital, time):

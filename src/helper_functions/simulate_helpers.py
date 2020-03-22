@@ -1,6 +1,6 @@
 from random import random, choice
 
-from .update_for_case import get_random_bed_update
+from .update_for_case import get_update_for_case, feasible_update_cases
 
 from .update_objects import (
     update_hospital,
@@ -43,10 +43,11 @@ def get_occured_requests(requests, time):
 def execute_bed_update(instance, time):
     update_roll = random()
     if update_roll < BED_UPDATE_PROB:
-        hospital_key = choice(list(instance.hospitals.keys()))
-        hospital = instance.hospitals[hospital_key]
-
-        update = get_random_bed_update(update_roll, hospital_key, time)
+        hospital = choice(list(instance.hospitals.values()))
+        cases = feasible_update_cases(hospital)
+        if not cases:
+            return None
+        update = get_update_for_case(time, hospital, choice(cases))
         update_hospital(hospital, update)
         return Snapshot(hospital.ident, update.filed_at, hospital.capacity_coefficient)
     return None

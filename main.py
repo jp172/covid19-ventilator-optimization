@@ -4,7 +4,13 @@ from src.simulate import simulate
 from src.visualize import visualize
 from src.evaluate import evaluate
 from src.compare import compare
-from src.globals import Scenario
+from src.globals import (
+    Scenario,
+    NUMBER_FREE_BEDS,
+    NUMBER_CORONA_BEDS,
+    NUMBER_FREE_CORONA_BEDS,
+    NUMBER_CORONA_PAT_IN_NORMAL_BED,
+)
 from src.write_out import write_output
 from src.helper_functions.build_instance import build_instance
 
@@ -21,9 +27,10 @@ def main(args):
 
     # THIS IS ONLY A DUMMY AND SHOULD REMOVED ONCE WE GENERATE REASONABLE BED DATA
     for h in project_instance.hospitals.values():
-        h.nbr_free_beds = 200
-        h.nbr_free_corona_beds = 20
-        h.nbr_corona_pat_in_normal_bed = 1
+        h.nbr_free_beds = NUMBER_FREE_BEDS
+        h.nbr_free_corona_beds = NUMBER_FREE_CORONA_BEDS
+        h.nbr_corona_pat_in_normal_bed = NUMBER_CORONA_PAT_IN_NORMAL_BED
+        h.nbr_corona_beds = NUMBER_CORONA_BEDS
 
     if args.compare:
         print("Start simulation of both schedulers")
