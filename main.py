@@ -4,12 +4,6 @@ from src.simulate import simulate
 from src.visualize import visualize
 from src.evaluate import squared_deviation_from_optimal_capacity
 from src.compare import compare
-from src.globals import (
-    NUMBER_FREE_BEDS,
-    NUMBER_CORONA_BEDS,
-    NUMBER_FREE_CORONA_BEDS,
-    NUMBER_CORONA_PAT_IN_NORMAL_BED,
-)
 from src.write_out import write_output
 from src.helper_functions.build_instance import build_instance
 
@@ -20,13 +14,6 @@ from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 def main(args):
 
     project_instance = build_instance(args)
-
-    # THIS IS ONLY A DUMMY AND SHOULD REMOVED ONCE WE GENERATE REASONABLE BED DATA
-    for h in project_instance.hospitals.values():
-        h.nbr_free_beds = NUMBER_FREE_BEDS
-        h.nbr_free_corona_beds = NUMBER_FREE_CORONA_BEDS
-        h.nbr_corona_pat_in_normal_bed = NUMBER_CORONA_PAT_IN_NORMAL_BED
-        h.nbr_corona_beds = NUMBER_CORONA_BEDS
 
     snapshot_list = []
     if args.compare:
