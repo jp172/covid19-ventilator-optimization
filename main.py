@@ -30,7 +30,7 @@ def main(args):
 
     if args.compare:
         print("Start simulation of both schedulers")
-        _, snapshots = compare(project_instance)
+        snapshots_simple, score_simple, snapshots, score = compare(project_instance)
     else:
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, CapacityScheduler())
