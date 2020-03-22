@@ -13,9 +13,9 @@ class Hospital:
     position: Position
     nbr_free_beds: int
     nbr_free_corona_beds: int
+    nbr_corona_beds: int
     nbr_corona_pat_in_normal_bed: int
     capacity_coefficient: float
-    # nbr_corona_beds: int ### needed later in generator !
 
     def calculate_capacity_coefficient(self):
         self.capacity_coefficient = (
