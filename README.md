@@ -1,5 +1,9 @@
 # covid19-ventilator-optimization
 
+Codebase for the VentilatorOptimizationVsVirus project of the WirvsVirus Hackathon.
+
+The core functionality of this project is a scheduling algorithm that assigns incoming patient requests to hospitals that have reasonable capacities left. Furthermore we have functionalities to generate arbitrary datasets, simulate different schedulers on generated instances, and visualize simulation results.
+
 ## Usage and arguments
 
 Call generate_data.py for generating your personal dataset.
