@@ -2,7 +2,7 @@ import argparse
 
 from src.simulate import simulate
 from src.visualize import visualize
-from src.evaluate import simple_evaluation
+from src.evaluate import squared_deviation_from_optimal_capacity
 from src.compare import compare
 from src.globals import (
     Scenario,
@@ -37,14 +37,15 @@ def main(args):
         print("Start simulation of both schedulers")
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
         print("Lower score means better capacity distribution")
-        print(f"standard score {score_simple} > our score {score}")
+        print(f"standard scores {score_simple} > {score} our score ")
         snapshot_list.append(snapshots_simple)
         snapshot_list.append(snapshots)
     else:
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, CapacityScheduler())
-        score = simple_evaluation(project_instance)
+        score = squared_deviation_from_optimal_capacity(project_instance)
         snapshot_list.append(snapshots)
+        print(score)
 
     if args.visualize:
         print("Start visualizing")
