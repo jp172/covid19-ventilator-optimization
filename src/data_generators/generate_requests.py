@@ -1,17 +1,13 @@
 import json
 import random
 
-from .generate_patients import generate_patients
 from ..objects.request import Request
 
 # range where the request file time is taken from
 time_range = (0, 100000)
-nbr_patients = 20000
 
 
-def generate_requests(write=True):
-    patients = generate_patients(nbr_patients, write=False)
-
+def generate_requests(patients, write=True):
     reqs = {}
 
     for ident, p in patients.items():
