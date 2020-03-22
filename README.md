@@ -13,10 +13,10 @@ You can pass the following arguments:
 
 You can turn on/off visualization using this switch. To enable visualization use:
 
-`python main.py normal -visualize=True`
+`python main.py -visualize=True`
 
 -output: Default is `True`
 
 You can turn on/off output with this switch. Usage example:
 
-`python main.py normal -output=True`
+`python main.py -output=True`
