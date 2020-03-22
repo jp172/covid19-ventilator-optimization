@@ -2,7 +2,7 @@ import csv
 import json
 import random
 
-from ..helper_functions.write_data import write_object_dict
+from ..helper_functions.write_data import write_objects
 from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position

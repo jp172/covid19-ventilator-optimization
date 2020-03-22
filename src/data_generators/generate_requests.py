@@ -1,7 +1,7 @@
 import json
 import random
 
-from ..helper_functions.write_data import write_dict, write_object_dict
+from ..helper_functions.write_data import write_dict, write_objects
 from ..objects.request import Request
 
 num_days = 150
