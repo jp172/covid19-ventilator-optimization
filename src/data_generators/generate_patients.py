@@ -8,7 +8,8 @@ from ..objects.person import Person
 from ..objects.position import Position
 
 nbr_patients = 20000
-
+lon_delta = 0.1
+lat_delta = 0.1
 
 def parse_cities():
     cities = {}
@@ -18,35 +19,37 @@ def parse_cities():
             city = City(
                     ident=row[0], 
                     name=row[1], 
-                    position=Position(row[3], row[4]), 
-                    population=row[5], 
+                    position=Position(float(row[3]), float(row[4])), 
+                    population=int(row[5]), 
                     state=row[6])
             cities[city.ident] = city
     return cities
 
 
-def generate_patients(write=True):
-    cities = parse_cities()
-
-    # coordinate ranges
-    lat_range = (48, 52)
-    lon_range = (8, 12)
-
-    data = {}
-
-    for i in range(nbr_patients):
-        p = Person(
+def sample_patients(cities):
+    patient_cities = random.choices(
+            population=list(cities.values()),
+            weights=[city.population for city in cities.values()],
+            k=nbr_patients)
+    patients = {}
+    for i, patient_city in enumerate(patient_cities):
+        patient = Person(
             ident=i,
             position=Position(
-                random.uniform(lat_range[0], lat_range[1]),
-                random.uniform(lon_range[0], lon_range[1]),
+                patient_city.position.lat + random.uniform(-lat_delta, lat_delta),
+                patient_city.position.lon + random.uniform(-lon_delta, lon_delta)
             ),
             corona_likelihood=random.random(),
-            severity=random.random(),
+            severity=random.random()
         )
+        patients[patient.ident] = patient.to_dict()
+    return patients
 
-        data[p.ident] = p.to_dict()
+
+def generate_patients(write=True):
+    cities = parse_cities()
+    patients = sample_patients(cities)
     if write:
         with open("data/patient_requests/patients.json", "w") as f:
-            json.dump(data, f)
-    return data
+            json.dump(patients, f)
+    return patients 
