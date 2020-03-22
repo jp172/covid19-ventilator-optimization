@@ -5,7 +5,6 @@ from src.visualize import visualize
 from src.evaluate import squared_deviation_from_optimal_capacity
 from src.compare import compare
 from src.globals import (
-    Scenario,
     NUMBER_FREE_BEDS,
     NUMBER_CORONA_BEDS,
     NUMBER_FREE_CORONA_BEDS,
@@ -19,9 +18,6 @@ from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
 def main(args):
-
-    if args.scenario not in [s.value for s in Scenario]:
-        raise ValueError
 
     project_instance = build_instance(args)
 
@@ -57,7 +53,6 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Input parameters for the algorithm")
-    parser.add_argument("scenario")
     parser.add_argument("-compare", default=False)
     parser.add_argument("-visualize", default=False)
     parser.add_argument("-output", default=True)

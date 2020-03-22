@@ -3,15 +3,7 @@
 ## Usage and arguments
 
 Call main.py to run a simulation.
-You need to pass the following arguments:
-
-### Necessary arguments
-
-scenario: Choose from options `"worst","high","normal"`
-
-Defines the scenario for which the simulation is run.
-
-Usage example: `python main.py worst`
+You can pass the following arguments:
 
 ### Optional arguments
 

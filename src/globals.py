@@ -24,9 +24,3 @@ class ScoreWeight(Enum):
     HIGH = 5
     MIDDLE = 2
     LOW = 1
-
-
-class Scenario(Enum):
-    WORST = "worst"
-    HIGH = "high"
-    NORMAL = "normal"
