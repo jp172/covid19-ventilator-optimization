@@ -1,5 +1,6 @@
 import csv
 import json
+import numpy as np
 import random
 
 from ..helper_functions.write_data import write_objects
@@ -23,8 +24,28 @@ def parse_cities():
                     name=row[1],
                     position=Position(float(row[3]), float(row[4])),
                     population=int(row[5]),
+                    population_density=0,
                     state=row[6])
             cities[city.ident] = city
+
+    total_density = 0
+    with open('data/data_gatherer/full_population_density_data.csv', newline='') as csvfile:
+        city_reader = csv.reader(csvfile)
+        for row in city_reader:
+            city_name = ''.join(c.lower() for c in row[0] if not c.isspace())
+            for city in cities.values():
+                if city_name == city.name:
+                    city.population_density += int(row[4])
+            total_density += int(row[4])
+
+    min_density = 1e9
+    for city in cities.values():
+        if city.population_density:
+            min_density = min(min_density, city.population_density)
+
+    for city in cities.values():
+        if not city.population_density:
+            city.population_density = min_density
 
     return cities
 

@@ -11,4 +11,5 @@ class City:
     name: str
     position: Position
     population: int
+    population_density: int
     state: str
