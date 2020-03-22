@@ -27,7 +27,7 @@ You can turn on/off output with this switch. Usage example:
 
 ## What to expect
 
-Simulations of our Algorithm for scheduling patients to hospital beds. Yellow and green colors are favorable hospital capacities, whereas red hospitals symbolise overburdened hospitals.
+Simulations of our Algorithm for scheduling patients to hospital beds. Yellow and green colors are favorable hospital capacities, whereas red hospitals symbolize overburdened hospitals.
 
 ### Our Optimization Algorithm
 
