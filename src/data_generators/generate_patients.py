@@ -53,7 +53,7 @@ def parse_cities():
 def sample_patients(cities):
     patient_cities = random.choices(
             population=list(cities.values()),
-            weights=[city.population for city in cities.values()],
+            weights=[city.population * city.population_density for city in cities.values()],
             k=num_patients)
 
     patients = {}
