@@ -35,7 +35,7 @@ def simulate(instance, scheduler):
         if event.request:
             request = instance.requests[str(event.request.ident)]
             ranked_hospital_proposal = scheduler.assign_request(
-                instance.hospitals, request, max_vehicle_range
+                instance.hospitals.values(), request, max_vehicle_range
             )
             hospital = ranked_hospital_proposal.proposal_dict[1]
             curr_update = create_update_object_for_request(request, hospital)

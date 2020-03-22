@@ -6,6 +6,6 @@ def get_feasible_hospitals(hospitals, person_position, max_vehicle_range):
         filter(
             lambda hosp: get_distance(hosp.position, person_position)
             < max_vehicle_range,
-            hospitals.values(),
+            hospitals,
         )
     )
