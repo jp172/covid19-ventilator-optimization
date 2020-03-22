@@ -27,8 +27,6 @@ def parse_cities():
 
 def generate_patients(write=True):
     cities = parse_cities()
-    for city in cities.values():
-        print(city.ident, city.name, city.position.lat, city.position.lon, city.population, city.state)
 
     # coordinate ranges
     lat_range = (48, 52)
