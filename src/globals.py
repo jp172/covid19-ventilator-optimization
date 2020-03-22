@@ -1,6 +1,3 @@
-from enum import Enum
-
-
 UPDATE_CASES = ["normal_to_corona", "corona_leaves_hosp"]
 
 CAPACITY_SCALAR = 0.25
@@ -30,6 +27,7 @@ NUMBER_INITALLY_INFECTED = 10
 
 EXPONENTIAL_RATE = 0.15
 
+MAX_VEHICLE_RANGE = 100
 
 class ScoreWeight(Enum):
     HIGH = 5

@@ -13,7 +13,5 @@ def build_instance(args):
     project_instance.requests = read_objects(
         "data/patient_requests/requests.json", Request
     )
-    project_instance.generate_vehicles()
-    # project_instance.generate_updates()
 
     return project_instance

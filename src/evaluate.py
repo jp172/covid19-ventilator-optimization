@@ -1,17 +1,3 @@
-from .globals import ScoreWeight
-
-
-def return_score_for_capacity(capacity):
-    if capacity > 5:
-        return ScoreWeight.HIGH.value
-    elif capacity > 2:
-        return ScoreWeight.MIDDLE.value
-    elif capacity > 1:
-        return ScoreWeight.LOW.value
-    else:
-        return 0
-
-
 def capacity_coefficients(hospitals):
     return list(map(lambda hosp: hosp.capacity_coefficient, hospitals))
 

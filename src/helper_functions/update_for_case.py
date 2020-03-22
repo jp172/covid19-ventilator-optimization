@@ -33,9 +33,7 @@ def feasible_update_cases(hospital):
     cases = []
     if hospital.nbr_corona_pat_in_normal_bed > 0:
         cases.append("normal_to_corona")
-    if (
-        hospital.nbr_free_corona_beds < hospital.nbr_corona_beds
-    ):  # SHOULD BE:hospital.nbr_corona_bed
+    if hospital.nbr_free_corona_beds < hospital.nbr_corona_beds:
         cases.append("corona_leaves_hosp")
     return cases
 
