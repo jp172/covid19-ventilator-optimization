@@ -8,10 +8,7 @@ from src.visualize import visualize
 from src.evaluate import evaluate
 from src.compare import compare
 from src.write_out import write_output
-from src.objects.instance import Instance
-from src.objects.request import Request
-from src.objects.hospital import Hospital
-from src.helper_functions.read_data import read_objects
+from src.helper_functions.build_instance import build_instance
 from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 
 
@@ -29,15 +26,7 @@ def main(args):
     if args.scenario not in [s.value for s in Scenario]:
         raise ValueError
 
-    project_instance = Instance()
-    project_instance.scenario = args.scenario
-    project_instance.hospitals = read_objects("data/hospitals/hospitals.json", Hospital)
-
-    project_instance.requests = read_objects(
-        "data/patient_requests/requests.json", Request
-    )
-    project_instance.generate_vehicles()
-    project_instance.generate_updates()
+    project_instance = build_instance(args)
 
     if args.compare:
         print("Start simulation of both schedulers")
