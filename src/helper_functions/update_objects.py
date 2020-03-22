@@ -34,8 +34,6 @@ def update_objects_after_request(hospital, update, vehicle, request):
     hospital.nbr_free_corona_beds += update.corona_bed_delta
     hospital.nbr_corona_pat_in_normal_bed += update.corona_pat_normal_bed_delta
 
-    hospital.nbr_free_corona_beds = max(hospital.nbr_free_corona_beds, 0)
-
     hospital.calculate_capacity_coefficient()
 
 
@@ -44,7 +42,6 @@ def update_hospital(hospital, update):
     hospital.nbr_free_corona_beds += update.corona_bed_delta
     hospital.nbr_corona_pat_in_normal_bed += update.corona_pat_normal_bed_delta
 
-    hospital.nbr_free_corona_beds = min(hospital.nbr_free_corona_beds, 10)
-    hospital.nbr_free_corona_beds = max(hospital.nbr_free_corona_beds, 0)
+    hospital.nbr_free_corona_beds = min(hospital.nbr_free_corona_beds, 20)
 
     hospital.calculate_capacity_coefficient()

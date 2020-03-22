@@ -20,7 +20,7 @@ def populate_exponentially_requests(patients):
     for day in range(num_days):
         num_newly_infected = int(exponential_rate * (1 - 1. * num_already_infected / num_patients) * (num_initially_infected + num_already_infected))
         num_newly_infected = min(num_patients - num_already_infected, num_newly_infected)
-        
+
         infected_per_day[day] = num_newly_infected
 
         for i in range(num_newly_infected):
@@ -30,7 +30,7 @@ def populate_exponentially_requests(patients):
             request = Request(
                 ident=patient_i,
                 person=patient,
-                filed_at=day+random.uniform(0, 1))
+                filed_at=(day+random.random()) * 1440)
 
             requests[patient_i] = request
 

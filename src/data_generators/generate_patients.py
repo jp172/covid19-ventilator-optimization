@@ -7,7 +7,7 @@ from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
 
-num_patients = 20000
+num_patients = 10000
 lon_delta = 0.1
 lat_delta = 0.1
 
@@ -18,10 +18,10 @@ def parse_cities():
         city_reader = csv.reader(csvfile)
         for row in city_reader:
             city = City(
-                    ident=row[0], 
-                    name=row[1], 
-                    position=Position(float(row[3]), float(row[4])), 
-                    population=int(row[5]), 
+                    ident=row[0],
+                    name=row[1],
+                    position=Position(float(row[3]), float(row[4])),
+                    population=int(row[5]),
                     state=row[6])
             cities[city.ident] = city
 
@@ -59,4 +59,4 @@ def generate_patients(write=True):
     if write:
         write_object_dict(patients, "data/patient_requests/patients.json")
 
-    return patients 
+    return patients

@@ -31,8 +31,8 @@ def main(args):
 
     # THIS IS ONLY A DUMMY AND SHOULD REMOVED ONCE WE GENERATE REASONABLE BED DATA
     for h in project_instance.hospitals.values():
-        h.nbr_free_beds = 20
-        h.nbr_free_corona_beds = 10
+        h.nbr_free_beds = 200
+        h.nbr_free_corona_beds = 20
         h.nbr_corona_pat_in_normal_bed = 1
 
     if args.compare:
@@ -40,7 +40,7 @@ def main(args):
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
     else:
         print("Start simulation capacity scheduler")
-        snapshots = simulate(project_instance, CapacityScheduler()) # SimpleScheduler()
+        snapshots = simulate(project_instance, SimpleScheduler()) # ()CapacityScheduler
 
     score = evaluate(project_instance)
     if score < 1e4:

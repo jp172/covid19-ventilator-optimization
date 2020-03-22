@@ -38,8 +38,8 @@ def hospital_visualization(instance, start, end, ticks):
 
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'y', 'x', 'capacity_score'])
 
-    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', color = 'capacity_score', color_continuous_scale=[(0.00, "green"),   (0.45, "yellow"),
-                                                     (0.9, "red"), (1.0, "black")], range_color = [0, 1], hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
+    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', color = 'capacity_score', color_continuous_scale=[(0.00, "green"),   (0.5, "yellow"),
+                                                     (1, "red")], range_color = [0, 2], hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=900, height=1200)
     fig.add_layout_image(dict(source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Karte_Deutschland.svg/1000px-Karte_Deutschland.svg.png"),
             xref="x",
             yref="y",
@@ -86,7 +86,7 @@ def corona_visualization(instance, start, end, ticks):
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'x', 'y'])
 
 
-    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
+    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=900, height=1200)
     fig.add_layout_image(dict(source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Karte_Deutschland.svg/1000px-Karte_Deutschland.svg.png"),
             xref="x",
             yref="y",

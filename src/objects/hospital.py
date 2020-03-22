@@ -15,6 +15,6 @@ class Hospital:
     capacity_coefficient: float
 
     def calculate_capacity_coefficient(self):
-        if self.nbr_free_corona_beds > 10:
+        if self.nbr_free_corona_beds > 20:
             print("Attention: negative capacity. The calculation is fukdup.")
-        self.capacity_coefficient = 1 - (self.nbr_free_corona_beds / 10)
+        self.capacity_coefficient = 1 - (self.nbr_free_corona_beds / 20)
