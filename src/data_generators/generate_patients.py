@@ -11,6 +11,7 @@ num_patients = 10000
 lon_delta = 0.1
 lat_delta = 0.1
 
+
 def parse_cities():
     cities = {}
 
