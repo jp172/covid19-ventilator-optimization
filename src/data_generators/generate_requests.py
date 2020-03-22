@@ -1,12 +1,13 @@
 import json
 import random
 
+from ..globals import (
+    NUMBER_DAYS,
+    NUMBER_INITALLY_INFECTED,
+    EXPONENTIAL_RATE
+)
 from ..helper_functions.write_data import write_dict, write_objects
 from ..objects.request import Request
-
-num_days = 150
-num_initially_infected = 10
-exponential_rate = 0.15
 
 
 def populate_exponentially_requests(patients):
@@ -17,8 +18,8 @@ def populate_exponentially_requests(patients):
     infected_per_day = {}
 
     num_already_infected = 0
-    for day in range(num_days):
-        num_newly_infected = int(exponential_rate * (1 - 1. * num_already_infected / num_patients) * (num_initially_infected + num_already_infected))
+    for day in range(NUMBER_DAYS):
+        num_newly_infected = int(EXPONENTIAL_RATE * (1 - 1. * num_already_infected / num_patients) * (NUMBER_INITALLY_INFECTED + num_already_infected))
         num_newly_infected = min(num_patients - num_already_infected, num_newly_infected)
 
         infected_per_day[day] = num_newly_infected
@@ -30,7 +31,7 @@ def populate_exponentially_requests(patients):
             request = Request(
                 ident=patient_i,
                 person=patient,
-                filed_at=(day+random.random()) * 1440)
+                filed_at=(day+random.random())*1440)
 
             requests[patient_i] = request
 

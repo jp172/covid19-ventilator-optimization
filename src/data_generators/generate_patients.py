@@ -3,16 +3,15 @@ import json
 import numpy as np
 import random
 
+from ..globals import (
+    NUMBER_PATIENTS,
+    LAT_DELTA,
+    LON_DELTA
+)
 from ..helper_functions.write_data import write_objects
 from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
-from ..globals import (
-    NUMBER_PATIENTS
-)
-
-lon_delta = 0.1
-lat_delta = 0.1
 
 
 def parse_cities():
@@ -64,8 +63,8 @@ def sample_patients(cities):
         patient = Person(
             ident=i,
             position=Position(
-                patient_city.position.lat + random.uniform(-lat_delta, lat_delta),
-                patient_city.position.lon + random.uniform(-lon_delta, lon_delta)
+                patient_city.position.lat + random.uniform(-LON_DELTA, LAT_DELTA),
+                patient_city.position.lon + random.uniform(-LON_DELTA, LAT_DELTA)
             ),
             corona_likelihood=random.random(),
             severity=random.random()
