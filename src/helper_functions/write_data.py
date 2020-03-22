@@ -8,4 +8,4 @@ def write_dict(output_dict, output_file):
 
 def write_object_dict(object_dict, output_file):
     object_dict = dict((key, value.to_dict()) for key, value in object_dict.items())
-    write_dict(object_dict)
+    write_dict(object_dict, output_file)
