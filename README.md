@@ -2,6 +2,8 @@
 
 ## Usage and arguments
 
+Call generate_data.py for generating your personal dataset.
+
 Call main.py to run a simulation.
 You can pass the following arguments:
 
