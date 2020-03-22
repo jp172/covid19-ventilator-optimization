@@ -31,9 +31,9 @@ def generate_hospitals(write=True):
                 lat=random.uniform(lat_range[0], lat_range[1]),
                 lon=random.uniform(lon_range[0], lon_range[1]),
             ),
-            num_free_beds=num_free_beds,
-            num_free_corona_beds=num_free_corona_beds,
-            num_corona_pat_in_normal_bed=num_corona_pat_in_normal_bed,
+            nbr_free_beds=num_free_beds,
+            nbr_free_corona_beds=num_free_corona_beds,
+            nbr_corona_pat_in_normal_bed=num_corona_pat_in_normal_bed,
             capacity_coefficient=1e9
             if num_free_corona_beds == 0
             else (CAPACITY_SCALAR * num_corona_pat_in_normal_bed)
