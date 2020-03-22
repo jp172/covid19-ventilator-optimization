@@ -1,4 +1,4 @@
-from .globals import ScoreWeight
+from .globals import ScoreWeight, TARGET_SCORE
 
 
 def return_score_for_capacity(capacity):
@@ -16,5 +16,11 @@ def evaluate(instance):
     capacity_coefficients = list(
         map(lambda hosp: hosp.capacity_coefficient, instance.hospitals.values())
     )
+    score = sum([return_score_for_capacity(cap) for cap in capacity_coefficients])
 
-    return sum([return_score_for_capacity(cap) for cap in capacity_coefficients])
+    if score < TARGET_SCORE:
+        print(f"The world is saved. (score: {score})")
+    else:
+        print(f"The world is doomed.(score: {score})")
+
+    return score

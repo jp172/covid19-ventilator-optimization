@@ -5,6 +5,8 @@ UPDATE_CASES = ["normal_to_corona", "corona_leaves_hosp"]
 
 CAPACITY_SCALAR = 0.25
 
+TARGET_SCORE = 1e4
+
 
 class ScoreWeight(Enum):
     WEIGHT_OVER_10 = 5

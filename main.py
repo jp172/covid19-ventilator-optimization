@@ -13,8 +13,6 @@ from src.schedulers.simple_scheduler import SimpleScheduler
 
 
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
-
-
 def main(args):
 
     if args.scenario not in [s.value for s in Scenario]:
@@ -36,11 +34,6 @@ def main(args):
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, SimpleScheduler())  # ()CapacityScheduler
         score = evaluate(project_instance)
-
-    if score < 1e4:
-        print(f"The world is saved. (score: {score})")
-    else:
-        print(f"The world is doomed.(score: {score})")
 
     if args.visualize:
         print("Start visualizing")
