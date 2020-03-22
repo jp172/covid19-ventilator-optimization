@@ -21,7 +21,7 @@ y_min = 47.2
 y_max = 55
 
 
-def hospital_visualization(instance, start, end, ticks):
+def hospital_visualization(instance, start, end, ticks, index):
 
     instance.snapshots = sorted(instance.snapshots, key=lambda s: s.filed_at)
     data_list = []
@@ -81,11 +81,11 @@ def hospital_visualization(instance, start, end, ticks):
     # fig.show()
 
     html_dump = fig.to_html()
-    with open("data/visualization/hospitals.html", "w") as f:
+    with open(f"data/visualization/hospitals{index}.html", "w") as f:
         f.write(html_dump)
 
 
-def corona_visualization(instance, start, end, ticks):
+def corona_visualization(instance, start, end, ticks, index):
 
     # visible for more time steps
     nbr_ticks_visible = 10
@@ -143,15 +143,20 @@ def corona_visualization(instance, start, end, ticks):
     )
     # fig.show()
     html_dump = fig.to_html()
-    with open("data/visualization/patients.html", "w") as f:
+    with open(f"data/visualization/patients{index}.html", "w") as f:
         f.write(html_dump)
 
 
-def visualize(instance, snapshots):
-    instance.snapshots = snapshots
-    time_frame_start = min(r.filed_at for r in instance.requests.values())
-    time_frame_end = max(r.filed_at for r in instance.requests.values())
-    nbr_ticks = 50
+def visualize(instance, snapshot_list):
+    for index in range(len(snapshot_list)):
+        instance.snapshots = snapshot_list[index]
+        time_frame_start = min(r.filed_at for r in instance.requests.values())
+        time_frame_end = max(r.filed_at for r in instance.requests.values())
+        nbr_ticks = 50
 
-    hospital_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)
-    corona_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)
+        hospital_visualization(
+            instance, time_frame_start, time_frame_end, nbr_ticks, index
+        )
+        corona_visualization(
+            instance, time_frame_start, time_frame_end, nbr_ticks, index
+        )

@@ -32,19 +32,23 @@ def main(args):
         h.nbr_corona_pat_in_normal_bed = NUMBER_CORONA_PAT_IN_NORMAL_BED
         h.nbr_corona_beds = NUMBER_CORONA_BEDS
 
+    snapshot_list = []
     if args.compare:
         print("Start simulation of both schedulers")
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
         print("Lower score means better capacity distribution")
         print(f"standard score {score_simple} > our score {score}")
+        snapshot_list.append(snapshots_simple)
+        snapshot_list.append(snapshots)
     else:
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, CapacityScheduler())
         score = simple_evaluation(project_instance)
+        snapshot_list.append(snapshots)
 
     if args.visualize:
         print("Start visualizing")
-        visualize(project_instance, snapshots)
+        visualize(project_instance, snapshot_list)
 
     if args.output:
         write_output(project_instance)
