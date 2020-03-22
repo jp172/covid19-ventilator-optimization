@@ -35,6 +35,7 @@ def main(args):
     if args.compare:
         print("Start simulation of both schedulers")
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
+        print("Lower score means better capacity distribution")
         print(f"standard score {score_simple} > our score {score}")
     else:
         print("Start simulation capacity scheduler")
