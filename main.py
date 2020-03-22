@@ -2,7 +2,7 @@ import argparse
 
 from src.simulate import simulate
 from src.visualize import visualize
-from src.evaluate import evaluate
+from src.evaluate import simple_evaluation
 from src.compare import compare
 from src.globals import (
     Scenario,
@@ -40,7 +40,7 @@ def main(args):
     else:
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, CapacityScheduler())
-        score = evaluate(project_instance)
+        score = simple_evaluation(project_instance)
 
     if args.visualize:
         print("Start visualizing")
