@@ -7,7 +7,7 @@ from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
 
-num_patients = 20
+num_patients = 20000
 lon_delta = 0.1
 lat_delta = 0.1
 
