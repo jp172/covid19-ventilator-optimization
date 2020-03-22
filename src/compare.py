@@ -17,6 +17,7 @@ def compare(instance):
 
     snapshots_capacity = simulate(instance, capacity_scheduler)
     objective_capacity = squared_deviation_from_optimal_capacity(instance)
+
     return (
         snapshots_simple,
         objective_simple,

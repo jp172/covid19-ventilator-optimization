@@ -8,7 +8,6 @@ from .update_objects import (
     create_update_object_for_request,
 )
 
-# from ..schedulers.vehicle_scheduler import vehicle_scheduler
 from ..objects.snapshot import Snapshot
 from ..globals import BED_UPDATE_PROB
 
@@ -21,7 +20,6 @@ def handle_requests(curr_requests, instance, scheduler, max_vehicle_range):
         )
         hospital = ranked_hospital_proposal.proposal_dict[1]
         curr_update = create_update_object_for_request(request, hospital)
-        # vehicle = vehicle_scheduler(instance.vehicles, request)
 
         update_objects_after_request(hospital, curr_update)
 

@@ -1,6 +1,6 @@
 # the solver should do the simulation, i.e., go through time steps, call the scheduler
 # if a new request comes in, etc. to this end the requests should be sorted in terms of time.
-from .globals import TIMESTEP
+from .globals import TIMESTEP, MAX_VEHICLE_RANGE
 from .helper_functions.simulate_helpers import (
     get_occured_requests,
     execute_bed_update,
@@ -10,10 +10,6 @@ from .helper_functions.simulate_helpers import (
 
 def simulate(instance, scheduler):
     snapshots = []
-
-    max_vehicle_range = max(
-        list(map(lambda x: x.max_range, instance.vehicles.values()))
-    )
 
     requests = list(instance.requests.values())
     time = 0
@@ -28,7 +24,7 @@ def simulate(instance, scheduler):
         requests = requests[crop_index:]
 
         snaps = handle_requests(
-            occured_requests, instance, scheduler, max_vehicle_range
+            occured_requests, instance, scheduler, MAX_VEHICLE_RANGE
         )
         snapshots.extend(snaps)
 
