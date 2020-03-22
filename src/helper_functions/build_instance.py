@@ -6,7 +6,6 @@ from ..objects.request import Request
 
 def build_instance(args):
     project_instance = Instance()
-    project_instance.scenario = args.scenario
     project_instance.hospitals = read_objects(
         "data/hospitals/hospitals-all.json", Hospital
     )
