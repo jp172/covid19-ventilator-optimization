@@ -5,6 +5,8 @@ UPDATE_CASES = ["normal_to_corona", "corona_leaves_hosp"]
 
 CAPACITY_SCALAR = 0.25
 
+SEVERITY_FOR_CORONA_BED = 0.8
+
 TARGET_SCORE = 1e4
 
 TIMESTEP = 50
