@@ -1,4 +1,3 @@
-# Generates a JSON file with @nbr_patients patients where for each of them a request will be filed
 import csv
 import json
 import random

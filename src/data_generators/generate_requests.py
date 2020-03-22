@@ -4,7 +4,6 @@ import random
 from ..helper_functions.write_data import write_object_dict
 from ..objects.request import Request
 
-# range where the request file time is taken from
 time_range = (0, 100000)
 
 
