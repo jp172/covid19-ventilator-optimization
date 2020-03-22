@@ -41,6 +41,6 @@ def generate_hospitals(write=True):
         hospitals[i] = hospital
 
     if write:
-        write_object_dict(hospitals, "data/hospitals/hospitals.json")
+        write_objects(hospitals, "data/hospitals/hospitals.json")
 
     return hospitals

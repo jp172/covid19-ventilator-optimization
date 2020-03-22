@@ -57,6 +57,6 @@ def generate_patients(write=True):
     patients = sample_patients(cities)
 
     if write:
-        write_object_dict(patients, "data/patient_requests/patients.json")
+        write_objects(patients, "data/patient_requests/patients.json")
 
     return patients

@@ -43,7 +43,7 @@ def generate_requests(patients, write=True):
     requests, infected_per_day = populate_exponentially_requests(patients)
 
     if write:
-        write_object_dict(requests, "data/patient_requests/requests.json")
+        write_objects(requests, "data/patient_requests/requests.json")
         write_dict(infected_per_day, "data/patient_requests/infected_per_day.json")
 
     return requests
