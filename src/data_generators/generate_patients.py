@@ -3,11 +3,12 @@ import csv
 import json
 import random
 
+from ..helper_functions.write_data import write_object_dict
 from ..objects.city import City
 from ..objects.person import Person
 from ..objects.position import Position
 
-nbr_patients = 20
+nbr_patients = 30
 lon_delta = 0.1
 lat_delta = 0.1
 
@@ -46,7 +47,7 @@ def sample_patients(cities):
             corona_likelihood=random.random(),
             severity=random.random()
         )
-        patients[patient.ident] = patient.to_dict()
+        patients[patient.ident] = patient
 
     return patients
 
@@ -57,7 +58,6 @@ def generate_patients(write=True):
     patients = sample_patients(cities)
 
     if write:
-        with open("data/patient_requests/patients.json", "w") as f:
-            json.dump(patients, f)
+        write_object_dict(patients, "data/patient_requests/patients.json")
 
     return patients 
