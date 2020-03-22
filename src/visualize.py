@@ -22,8 +22,7 @@ def hospital_visualization(instance, start, end, ticks):
 
     instance.snapshots = sorted(instance.snapshots, key = lambda s : s.filed_at)
     data_list = []
-
-    hospital_scores = { ident : h.capacity_coefficient for ident, h in instance.hospitals.items()}
+    hospital_scores = { ident : 0 for ident, h in instance.hospitals.items()}
 
     i = 0
     for t in range(ticks):
@@ -32,15 +31,15 @@ def hospital_visualization(instance, start, end, ticks):
 
         while i + 1 < len(instance.snapshots) and instance.snapshots[i + 1].filed_at <= cur_time:
             s = instance.snapshots[i]
-            hospital_scores[s.hospital_ident] = s.capacity_coefficient
+            hospital_scores[str(s.hospital_ident)] = s.capacity_coefficient
             i += 1
 
         add_data(data_list, instance, hospital_scores, cur_time)
 
     df = pd.DataFrame(data_list, columns = ['time', 'id', 'y', 'x', 'capacity_score'])
 
-    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', color = 'capacity_score', color_continuous_scale=[(0.00, "green"),   (0.33, "yellow"),
-                                                     (0.66, "red"), (1.0, "black")], hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
+    fig = px.scatter(df, x = 'x', y = 'y', animation_frame= 'time', animation_group = 'id', color = 'capacity_score', color_continuous_scale=[(0.00, "green"),   (0.45, "yellow"),
+                                                     (0.9, "red"), (1.0, "black")], range_color = [0, 1], hover_name = 'id', range_x = [x_min, x_max], range_y = [y_min, y_max], width=800, height=1200)
     fig.add_layout_image(dict(source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Karte_Deutschland.svg/1000px-Karte_Deutschland.svg.png"),
             xref="x",
             yref="y",
@@ -108,7 +107,7 @@ def visualize(instance, snapshots):
     instance.snapshots = snapshots
     time_frame_start = min(r.filed_at for r in instance.requests.values())
     time_frame_end = max(r.filed_at for r in instance.requests.values())
-    nbr_ticks = 100
+    nbr_ticks = 50
 
     hospital_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)
     corona_visualization(instance, time_frame_start, time_frame_end, nbr_ticks)

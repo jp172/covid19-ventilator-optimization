@@ -4,21 +4,21 @@ from ..objects.update import Update
 
 def create_update_object_for_request(request, hospital):
     person = request.person
-    if person.corona_likelihood > 0.33 and person.severity > 0.66:
+    if person.corona_likelihood > 0 and person.severity > 0:
         return Update(
             hospital_ident=hospital.ident,
             filed_at=request.filed_at,
-            normal_bed_delta=0,
-            corona_bed_delta=-1,
-            corona_pat_normal_bed_delta=0,
+            normal_bed_delta = 0,
+            corona_bed_delta = -1,
+            corona_pat_normal_bed_delta = 0,
         )
     else:
         return Update(
             hospital_ident=hospital.ident,
             filed_at=request.filed_at,
-            normal_bed_delta=-1,
-            corona_bed_delta=0,
-            corona_pat_normal_bed_delta=0,
+            normal_bed_delta = -1,
+            corona_bed_delta = 0,
+            corona_pat_normal_bed_delta = 0,
         )
 
 
@@ -34,8 +34,17 @@ def update_objects_after_request(hospital, update, vehicle, request):
     hospital.nbr_free_corona_beds += update.corona_bed_delta
     hospital.nbr_corona_pat_in_normal_bed += update.corona_pat_normal_bed_delta
 
+    hospital.nbr_free_corona_beds = max(hospital.nbr_free_corona_beds, 0)
+
+    hospital.calculate_capacity_coefficient()
+
 
 def update_hospital(hospital, update):
     hospital.nbr_free_beds += update.normal_bed_delta
     hospital.nbr_free_corona_beds += update.corona_bed_delta
     hospital.nbr_corona_pat_in_normal_bed += update.corona_pat_normal_bed_delta
+
+    hospital.nbr_free_corona_beds = min(hospital.nbr_free_corona_beds, 10)
+    hospital.nbr_free_corona_beds = max(hospital.nbr_free_corona_beds, 0)
+
+    hospital.calculate_capacity_coefficient()

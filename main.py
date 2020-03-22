@@ -10,6 +10,7 @@ from src.compare import compare
 from src.write_out import write_output
 from src.helper_functions.build_instance import build_instance
 from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
+from src.schedulers.simple_scheduler import SimpleScheduler
 
 
 class Scenario(Enum):
@@ -28,12 +29,18 @@ def main(args):
 
     project_instance = build_instance(args)
 
+    # THIS IS ONLY A DUMMY AND SHOULD REMOVED ONCE WE GENERATE REASONABLE BED DATA
+    for h in project_instance.hospitals.values():
+        h.nbr_free_beds = 20
+        h.nbr_free_corona_beds = 10
+        h.nbr_corona_pat_in_normal_bed = 1
+
     if args.compare:
         print("Start simulation of both schedulers")
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
     else:
         print("Start simulation capacity scheduler")
-        snapshots = simulate(project_instance, CapacityScheduler())
+        snapshots = simulate(project_instance, CapacityScheduler()) # SimpleScheduler()
 
     score = evaluate(project_instance)
     if score < 1e4:
