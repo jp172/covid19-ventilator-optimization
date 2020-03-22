@@ -35,7 +35,11 @@ def main(args):
         print("Start simulation capacity scheduler")
         snapshots = simulate(project_instance, CapacityScheduler())
 
-    evaluate(project_instance)
+    score = evaluate(project_instance)
+    if score < 1e4:
+        print(f"The world is saved. (score: {score})")
+    else:
+        print(f"The world is doomed.(score: {score})")
 
     if args.visualize:
         print("Start visualizing")
