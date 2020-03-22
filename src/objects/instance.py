@@ -37,6 +37,6 @@ class Instance:
             # 10 updates over the time frame
             for ind in range(10):
                 time = randint(int(time_frame[0]), int(time_frame[1]))
-                update = get_random_update(time, key)
+                update = get_random_update(time, self.hospitals[key])
 
                 self.updates[f"{key}#{ind}"] = update

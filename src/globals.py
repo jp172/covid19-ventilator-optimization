@@ -7,6 +7,10 @@ CAPACITY_SCALAR = 0.25
 
 TARGET_SCORE = 1e4
 
+TIMESTEP = 50
+
+BED_UPDATE_PROB = 10
+
 
 class ScoreWeight(Enum):
     WEIGHT_OVER_10 = 5

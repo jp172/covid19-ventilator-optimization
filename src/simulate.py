@@ -6,20 +6,11 @@ from .helper_functions.update_objects import (
     update_objects_after_request,
     create_update_object_for_request,
 )
-from .objects.event import Event
+from random import random, choice
+
+from .helper_functions.update_for_case import get_random_bed_update
+from .globals import TIMESTEP, BED_UPDATE_PROB
 from .objects.snapshot import Snapshot
-
-
-def create_events(instance):
-    events = []
-
-    for request in instance.requests.values():
-        events.append(Event(request, True))
-
-    for update in instance.updates.values():
-        events.append(Event(update, False))
-    events = sorted(events, key=lambda r: r.filed_at)
-    return events
 
 
 def simulate(instance, scheduler):
@@ -29,11 +20,27 @@ def simulate(instance, scheduler):
         list(map(lambda x: x.max_range, instance.vehicles.values()))
     )
 
-    for event in create_events(instance):
+    requests = list(instance.requests.values())
+    time = 0
+    finished = False
 
-        # it is a request, so process request!
-        if event.request:
-            request = instance.requests[str(event.request.ident)]
+    while not finished:
+        new_index = 0
+        occured_requests = []
+
+        for ind, req in enumerate(requests):
+            if req.filed_at <= time:
+                occured_requests.append(req)
+            if req.filed_at > time:
+                new_index = ind
+                break
+
+        if len(occured_requests) == len(requests):
+            finished = True
+
+        requests = requests[new_index:]
+
+        for request in occured_requests:
             ranked_hospital_proposal = scheduler.assign_request(
                 instance.hospitals.values(), request, max_vehicle_range
             )
@@ -42,17 +49,24 @@ def simulate(instance, scheduler):
             vehicle = vehicle_scheduler(instance.vehicles, request)
 
             update_objects_after_request(hospital, curr_update, vehicle, request)
+            snapshots.append(
+                Snapshot(
+                    hospital.ident, request.filed_at, hospital.capacity_coefficient
+                )
+            )
 
-        # event is a bed update. update hospital!
-        else:
-            curr_update = event.update
-            hospital = instance.hospitals[event.update.hospital_ident]
-            update_hospital(hospital, curr_update)
+        update_roll = random()
+        if update_roll < BED_UPDATE_PROB:
+            hospital_key = choice(list(instance.hospitals.keys()))
+            hospital = instance.hospitals[hospital_key]
 
-        # for visualisation: make a snapshot of the current time.
-        # hospitals -> id, nbr freebeds, nbr free corona beds,
+            update = get_random_bed_update(update_roll, hospital_key, time)
+            update_hospital(hospital, update)
 
-        snapshots.append(
-            Snapshot(hospital.ident, event.filed_at, hospital.capacity_coefficient)
-        )
+            snapshots.append(
+                Snapshot(hospital.ident, update.filed_at, hospital.capacity_coefficient)
+            )
+
+        time += TIMESTEP
+
     return snapshots

@@ -6,7 +6,7 @@ def create_update_object_for_request(request, hospital):
     person = request.person
     if person.corona_likelihood > 0 and person.severity > 0:
         return Update(
-            hospital_ident=hospital.ident,
+            hospital=hospital,
             filed_at=request.filed_at,
             normal_bed_delta=0,
             corona_bed_delta=-1,
@@ -14,7 +14,7 @@ def create_update_object_for_request(request, hospital):
         )
     else:
         return Update(
-            hospital_ident=hospital.ident,
+            hospital=hospital,
             filed_at=request.filed_at,
             normal_bed_delta=-1,
             corona_bed_delta=0,

@@ -8,8 +8,7 @@ from src.globals import Scenario
 from src.write_out import write_output
 from src.helper_functions.build_instance import build_instance
 
-# from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
-from src.schedulers.simple_scheduler import SimpleScheduler
+from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 
 
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
@@ -32,7 +31,7 @@ def main(args):
         print(f"standard score {score_simple} > our score {score}")
     else:
         print("Start simulation capacity scheduler")
-        snapshots = simulate(project_instance, SimpleScheduler())  # ()CapacityScheduler
+        snapshots = simulate(project_instance, CapacityScheduler())
         score = evaluate(project_instance)
 
     if args.visualize:
