@@ -3,7 +3,7 @@ import json
 
 def write_dict(output_dict, output_file):
     with open(output_file, "w") as f:
-        json.dump(object_dict, f)
+        json.dump(output_dict, f)
 
 
 def write_object_dict(object_dict, output_file):

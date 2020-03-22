@@ -9,7 +9,7 @@ from .position import Position
 class Hospital:
     ident: str
     position: Position
-    nbr_free_beds: int
-    nbr_free_corona_beds: int
-    nbr_corona_pat_in_normal_bed: int
+    num_free_beds: int
+    num_free_corona_beds: int
+    num_corona_pat_in_normal_bed: int
     capacity_coefficient: float
