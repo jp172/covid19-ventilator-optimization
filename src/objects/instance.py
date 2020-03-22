@@ -20,7 +20,7 @@ class Instance:
             v = Vehicle(
                 ident=hospital.ident,
                 speed=50,
-                max_range=50,
+                max_range=100,
                 position=hospital.position,
                 depot_position=hospital.position,
             )

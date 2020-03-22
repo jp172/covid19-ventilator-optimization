@@ -2,12 +2,12 @@ from .globals import ScoreWeight, TARGET_SCORE
 
 
 def return_score_for_capacity(capacity):
-    if capacity > 10:
-        return ScoreWeight.WEIGHT_OVER_10.value
-    elif capacity > 5:
-        return ScoreWeight.WEIGHT_OVER_5.value
+    if capacity > 1.75:
+        return ScoreWeight.HIGH.value
+    elif capacity > 1.5:
+        return ScoreWeight.MIDDLE.value
     elif capacity > 1:
-        return ScoreWeight.WEIGHT_OVER_1.value
+        return ScoreWeight.LOW.value
     else:
         return 0
 
@@ -38,3 +38,7 @@ def simple_evaluation(instance):
         print(f"The world is doomed.(score: {score})")
 
     return score
+
+
+def quadratic_evaluation(instance):
+    pass

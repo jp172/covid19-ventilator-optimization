@@ -21,9 +21,9 @@ NUMBER_CORONA_PAT_IN_NORMAL_BED = 1
 
 
 class ScoreWeight(Enum):
-    WEIGHT_OVER_10 = 5
-    WEIGHT_OVER_5 = 2
-    WEIGHT_OVER_1 = 1
+    HIGH = 5
+    MIDDLE = 2
+    LOW = 1
 
 
 class Scenario(Enum):
