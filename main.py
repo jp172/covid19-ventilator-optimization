@@ -1,22 +1,15 @@
 import argparse
 
-from enum import Enum
-
-
 from src.simulate import simulate
 from src.visualize import visualize
 from src.evaluate import evaluate
 from src.compare import compare
+from src.globals import Scenario
 from src.write_out import write_output
 from src.helper_functions.build_instance import build_instance
-from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
+
+# from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 from src.schedulers.simple_scheduler import SimpleScheduler
-
-
-class Scenario(Enum):
-    WORST = "worst"
-    HIGH = "high"
-    NORMAL = "normal"
 
 
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
@@ -38,11 +31,12 @@ def main(args):
     if args.compare:
         print("Start simulation of both schedulers")
         snapshots_simple, score_simple, snapshots, score = compare(project_instance)
+        print(f"standard score {score_simple} > our score {score}")
     else:
         print("Start simulation capacity scheduler")
-        snapshots = simulate(project_instance, SimpleScheduler()) # ()CapacityScheduler
+        snapshots = simulate(project_instance, SimpleScheduler())  # ()CapacityScheduler
+        score = evaluate(project_instance)
 
-    score = evaluate(project_instance)
     if score < 1e4:
         print(f"The world is saved. (score: {score})")
     else:

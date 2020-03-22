@@ -1,7 +1,7 @@
 from random import choice
 from ..objects.update import Update
 
-UPDATE_CASES = ["normal_to_corona", "corona_leaves_hosp"]
+from ..globals import UPDATE_CASES
 
 
 def get_random_update(time, hospital_key):

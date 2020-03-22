@@ -1,10 +1,4 @@
-from enum import Enum
-
-
-class ScoreWeight(Enum):
-    WEIGHT_OVER_10 = 5
-    WEIGHT_OVER_5 = 2
-    WEIGHT_OVER_1 = 1
+from .globals import ScoreWeight
 
 
 def return_score_for_capacity(capacity):

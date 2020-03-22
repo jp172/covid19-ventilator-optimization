@@ -12,6 +12,7 @@ class SimpleScheduler:
             key=lambda hosp: get_distance(hosp.position, request.person.position),
         )
 
+        # get feasible hospitals checks for vehicle range and free beds
         feasible_hospitals = get_feasible_hospitals(
             sorted_hospitals, request.person.position, max_vehicle_range
         )

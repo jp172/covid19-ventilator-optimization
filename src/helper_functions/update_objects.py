@@ -8,17 +8,17 @@ def create_update_object_for_request(request, hospital):
         return Update(
             hospital_ident=hospital.ident,
             filed_at=request.filed_at,
-            normal_bed_delta = 0,
-            corona_bed_delta = -1,
-            corona_pat_normal_bed_delta = 0,
+            normal_bed_delta=0,
+            corona_bed_delta=-1,
+            corona_pat_normal_bed_delta=0,
         )
     else:
         return Update(
             hospital_ident=hospital.ident,
             filed_at=request.filed_at,
-            normal_bed_delta = -1,
-            corona_bed_delta = 0,
-            corona_pat_normal_bed_delta = 0,
+            normal_bed_delta=-1,
+            corona_bed_delta=0,
+            corona_pat_normal_bed_delta=0,
         )
 
 

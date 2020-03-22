@@ -1,19 +1,18 @@
-import json
 import random
 
 from ..helper_functions.write_data import write_object_dict
+from ..globals import CAPACITY_SCALAR
 from src.objects.hospital import Hospital
 from src.objects.position import Position
 
-CAPACITY_SCALAR = 0.25
 
 num_hospitals = 100
 max_num_free_beds = 20
 lat_range = (48, 52)
 lon_range = (8, 12)
 
-def generate_hospitals(write=True):
 
+def generate_hospitals(write=True):
 
     # coordinate ranges
 
