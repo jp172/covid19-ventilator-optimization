@@ -6,6 +6,7 @@ from math import sin, asin, cos, sqrt, radians
 # the last factor is an approximation to the street network
 # TODO: Query google maps for realistic times
 
+
 def get_distance(a, b):
     lat1, lon1 = a.lat, a.lon
     lat2, lon2 = b.lat, b.lon

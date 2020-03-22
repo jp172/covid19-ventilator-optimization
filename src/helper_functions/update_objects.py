@@ -1,9 +1,10 @@
 from ..objects.update import Update
+from ..globals import SEVERITY_FOR_CORONA_BED
 
 
 def create_update_object_for_request(request, hospital):
     person = request.person
-    if person.severity > 0.8:
+    if person.severity > SEVERITY_FOR_CORONA_BED:
         return Update(
             hospital=hospital,
             filed_at=request.filed_at,
