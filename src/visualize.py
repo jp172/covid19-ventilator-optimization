@@ -15,10 +15,10 @@ def add_data(data, instance, hospital_scores, cur_time):
         )
 
 
-x_min = 5.7
-x_max = 15.5
-y_min = 47.2
-y_max = 55
+x_min = 5.6
+x_max = 15.35
+y_min = 47.1
+y_max = 55.1
 
 
 def hospital_visualization(instance, start, end, ticks, index):
