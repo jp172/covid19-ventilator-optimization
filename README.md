@@ -1,4 +1,4 @@
-# covid19-hospital-scheduler
+# covid19-ventilator-optimization
 
 ## Usage and arguments
 
