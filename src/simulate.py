@@ -11,27 +11,24 @@ from .helper_functions.simulate_helpers import (
 def simulate(instance, scheduler):
     snapshots = []
 
-    requests = list(instance.requests.values())
-    time = 0
-    finished = False
 
-    while not finished:
-        occured_requests = get_occured_requests(requests, time)
+    times = sorted(instance.requests.keys())
+    all_requests = { t : [] for t in times}
+    for t, r in instance.requests.items():
+        all_requests[t].append(r)
 
-        if len(occured_requests) == len(requests):
-            finished = True
-        crop_index = len(occured_requests)
-        requests = requests[crop_index:]
+    for t in times:
+        occured_requests = all_requests[t]
 
         snaps = handle_requests(
             occured_requests, instance, scheduler, MAX_VEHICLE_RANGE
         )
         snapshots.extend(snaps)
 
-        snap = execute_bed_update(instance, time)
+        snap = execute_bed_update(instance, t)
         if snap:
             snapshots.append(snap)
 
-        time += TIMESTEP
+
 
     return snapshots

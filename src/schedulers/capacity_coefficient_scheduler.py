@@ -4,7 +4,6 @@ from ..objects.proposal import RankedProposal
 
 class CapacityScheduler:
     def assign_request(self, hospitals, request, max_vehicle_range):
-        hospitals = sorted(hospitals, key=lambda hosp: hosp.capacity_coefficient)
 
         # get feasible hospitals checks for vehicle range and free beds
         feasible_hospitals = get_feasible_hospitals(
@@ -12,6 +11,8 @@ class CapacityScheduler:
         )
 
         if not feasible_hospitals:
-            return RankedProposal([hospitals[0]])
-
-        return RankedProposal(feasible_hospitals[: min(len(feasible_hospitals), 3)])
+            best_hospital = min(hospitals, key=lambda hosp: hosp.capacity_coefficient)
+            return RankedProposal([best_hospital])
+        else:
+            feasible_hospitals = sorted(feasible_hospitals, key = lambda h : h.capacity_coefficient)[:3]
+            return RankedProposal(feasible_hospitals)

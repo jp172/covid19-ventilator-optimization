@@ -13,6 +13,7 @@ from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
 def main(args):
 
+    print("reading in instance!")
     project_instance = build_instance(args)
 
     snapshot_list = []
