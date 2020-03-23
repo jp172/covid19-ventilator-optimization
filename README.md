@@ -1,3 +1,5 @@
+@Hackathon #WirvsVirus Jury: Our submission (as of Sunday 23:59) can be found in the branch "hackathon-submission".
+
 # covid19-ventilator-optimization
 
 Codebase for the VentilatorOptimizationVsVirus project of the WirvsVirus Hackathon.
