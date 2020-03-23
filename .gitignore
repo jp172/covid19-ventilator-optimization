@@ -1,5 +1,7 @@
 __pycache__
 .DS_Store
 data/output/out.json
-data/visualization/
+data/visualization/hospitals.json
+data/visualization/hospitals0.json
+data/visualization/hospitals1.json
 *.swp
