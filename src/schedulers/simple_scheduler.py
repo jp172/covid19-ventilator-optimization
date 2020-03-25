@@ -4,18 +4,19 @@ from .utils import get_feasible_hospitals
 
 
 class SimpleScheduler:
-    # disponents schedule patients to bed as long as there are available beds in nearby hospitals
+    # dispositions schedule patients to bed as long as there are available beds in nearby hospitals
     # they choose the nearest available hospital
-    def assign_request(self, hospitals, request, max_vehicle_range):
+    def assign_request(self, instance, request):
+
+        hospitals = instance.get_hospitals_in_area(request.person.position)
+
         sorted_hospitals = sorted(
             hospitals,
             key=lambda hosp: get_distance(hosp.position, request.person.position),
         )
 
         # get feasible hospitals checks for vehicle range and free beds
-        feasible_hospitals = get_feasible_hospitals(
-            sorted_hospitals, request.person.position, max_vehicle_range
-        )
+        feasible_hospitals = get_feasible_hospitals(sorted_hospitals, request.person.position)
 
         if not feasible_hospitals:
             return RankedProposal([sorted_hospitals[0]])

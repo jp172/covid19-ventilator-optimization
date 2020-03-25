@@ -9,11 +9,14 @@ from src.helper_functions.build_instance import build_instance
 
 from src.schedulers.capacity_coefficient_scheduler import CapacityScheduler
 
+from random import seed
+seed(42)
+
 
 # this main reads data, solves the scheduling problem, writes json output, and visualize the results
 def main(args):
 
-    print("reading in instance!")
+    print("reading in instance")
     project_instance = build_instance(args)
 
     snapshot_list = []
@@ -29,13 +32,14 @@ def main(args):
         snapshots = simulate(project_instance, CapacityScheduler())
         score = squared_deviation_from_optimal_capacity(project_instance)
         snapshot_list.append(snapshots)
-        print(score)
+        print("Score: ", score)
 
     if args.visualize:
         print("Start visualizing")
         visualize(project_instance, snapshot_list)
 
     if args.output:
+        print("Writing output")
         write_output(project_instance)
 
 

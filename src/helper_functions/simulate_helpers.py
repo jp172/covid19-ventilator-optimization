@@ -12,12 +12,10 @@ from ..objects.snapshot import Snapshot
 from ..globals import BED_UPDATE_PROB
 
 
-def handle_requests(curr_requests, instance, scheduler, max_vehicle_range):
+def handle_requests(curr_requests, instance, scheduler):
     snaps = []
     for request in curr_requests:
-        ranked_hospital_proposal = scheduler.assign_request(
-            instance.hospitals.values(), request, max_vehicle_range
-        )
+        ranked_hospital_proposal = scheduler.assign_request(instance, request)
         hospital = ranked_hospital_proposal.proposal_dict[1]
         curr_update = create_update_object_for_request(request, hospital)
 

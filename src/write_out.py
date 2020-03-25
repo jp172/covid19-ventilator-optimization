@@ -13,5 +13,3 @@ def write_output(instance, output_file=""):
         of = output_file
     with open("data/output/" + of + ".json", "w") as f:
         json.dump(out_data, f)
-
-    print("printed!")

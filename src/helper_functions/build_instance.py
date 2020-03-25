@@ -14,4 +14,7 @@ def build_instance(args):
         "data/patient_requests/requests.json", Request
     )
 
+    print("precomputing hospitals for areas")
+    project_instance.precompute_hospitals_in_area()
+
     return project_instance
