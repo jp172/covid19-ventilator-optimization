@@ -10,7 +10,7 @@ from ..helper_functions.read_data import read_objects
 from ..helper_functions.write_data import write_objects
 from ..globals import CAPACITY_SCALAR
 from src.objects.hospital import Hospital
-from src.objects.position import Position
+from src.objects.location import Location
 
 
 def generate_hospitals(write=True):

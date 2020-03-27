@@ -1,7 +1,7 @@
 from ..helper_functions.read_data import read_objects
 from ..objects.instance import Instance
 from ..objects.hospital import Hospital
-from ..objects.request import Request
+from ..objects.patient_request import PatientRequest
 
 
 def build_instance(args):
@@ -11,7 +11,7 @@ def build_instance(args):
     )
 
     project_instance.requests = read_objects(
-        "data/patient_requests/requests.json", Request
+        "data/patient_requests/requests.json", PatientRequest
     )
 
     print("precomputing hospitals for areas")

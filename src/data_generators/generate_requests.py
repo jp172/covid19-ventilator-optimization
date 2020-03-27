@@ -7,7 +7,7 @@ from ..globals import (
     EXPONENTIAL_RATE
 )
 from ..helper_functions.write_data import write_dict, write_objects
-from ..objects.request import Request
+from ..objects.patient_request import PatientRequest
 
 
 def populate_exponentially_requests(patients):
@@ -28,7 +28,7 @@ def populate_exponentially_requests(patients):
             patient_i = num_already_infected + i
             patient = patients_sorted[patient_i]
 
-            request = Request(
+            request = PatientRequest(
                 ident=patient_i,
                 person=patient,
                 filed_at=(day+random.random())*1440)

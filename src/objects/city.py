@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
-from .position import Position
+from .location import Location
 
 
 @dataclass_json
@@ -9,7 +9,7 @@ from .position import Position
 class City:
     ident: str
     name: str
-    position: Position
+    position: Location
     population: int
     population_density: int
     state: str

@@ -11,7 +11,7 @@ from ..globals import (
 from ..helper_functions.write_data import write_objects
 from ..objects.city import City
 from ..objects.person import Person
-from ..objects.position import Position
+from ..objects.location import Location
 
 
 def parse_cities():
@@ -23,7 +23,7 @@ def parse_cities():
             city = City(
                     ident=row[0],
                     name=row[1],
-                    position=Position(float(row[3]), float(row[4])),
+                    position=Location(float(row[3]), float(row[4])),
                     population=int(row[5]),
                     population_density=0,
                     state=row[6])
@@ -62,7 +62,7 @@ def sample_patients(cities):
     for i, patient_city in enumerate(patient_cities):
         patient = Person(
             ident=i,
-            position=Position(
+            position=Location(
                 patient_city.position.lat + random.uniform(-LON_DELTA, LAT_DELTA),
                 patient_city.position.lon + random.uniform(-LON_DELTA, LAT_DELTA)
             ),
