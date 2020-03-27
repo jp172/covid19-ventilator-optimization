@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
 from ..globals import CAPACITY_SCALAR
-
 from .location import Location
 
 

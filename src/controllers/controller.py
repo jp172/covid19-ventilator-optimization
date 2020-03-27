@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 from flask import jsonify
 
-from ..services.request_processing import process_request
+from ..services.patient_request_processing import process_patient_request
 from ..services.report_processing import process_report, get_hospital_status
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ class Request(Resource):
 
     def post(self):
         if request.form['id']:
-            result = process_request(request.form['request'])
+            result = process_patient_request(request.form['request'])
             return jsonify(result)
         else:
             print("no feasible request id!")
