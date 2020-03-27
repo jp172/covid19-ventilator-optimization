@@ -9,19 +9,19 @@ from .location import Location
 @dataclass_json
 @dataclass
 class Hospital:
-    ident: str  # identity
-    name: str  # name of hospital
+    id: str  # identity
     position: Location  # of hospital
-    photo: str  # link to hospital image file
-    nbr_free_beds: int
-    nbr_free_corona_beds: int
-    nbr_corona_beds: int
-    nbr_corona_pat_in_normal_bed: int
-    available_ventilators: int # number of available ventilators
-    capacity_coefficient: float
-    current_wait_time: int  # current wait time for check in at hospital
-    travel_distance: int  # distance (from patients current location) in meters
-    travel_time: int  # travel time of patient to hospital
+    name: str = ""  # name of hospital
+    photo: str = ""  # link to hospital image file
+    nbr_free_beds: int = 0  #
+    nbr_free_corona_beds: int = 0
+    nbr_corona_beds: int = 0
+    nbr_corona_pat_in_normal_bed: int = 0
+    available_ventilators: int = 0  # number of available ventilators
+    capacity_coefficient: float = 0
+    current_wait_time: int = 0  # current wait time for check in at hospital
+    travel_distance: int = 0 # distance (from patients current location) in meters
+    travel_time: int = 0  # travel time of patient to hospital
 
     def calculate_capacity_coefficient(self):
         self.capacity_coefficient = (
