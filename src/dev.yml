@@ -1,0 +1,8 @@
+batch:
+  image: mobi/patient-hospital-optimization
+  container_name: patient-hospital-optimization
+  volumes:
+    - ../src:/mobi/src
+  command: ""
+  ports:
+    - "8080:8080"
