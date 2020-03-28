@@ -13,6 +13,10 @@ Call generate_data.py for generating your personal dataset.
 Call main.py to run a simulation.
 You can pass the following arguments:
 
+## Build Docker Image
+
+`docker build src/`
+
 ### Optional arguments
 
 -visualize: Default is `False`
